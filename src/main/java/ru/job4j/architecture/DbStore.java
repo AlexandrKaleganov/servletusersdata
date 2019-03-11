@@ -43,10 +43,10 @@ public class DbStore implements Store<Users> {
                 settings.load(in);
             }
             db(settings.getProperty("add.tableUser"), new ArrayList<>(), pr -> pr.executeUpdate());
-            db(settings.getProperty("add.tableCountry"), new ArrayList<>(), pr -> pr.executeUpdate());
-            db(settings.getProperty("add.tableCity"), new ArrayList<>(), pr -> pr.executeUpdate());
-            db(settings.getProperty("add.tableAdresHelp"), new ArrayList<>(), pr -> pr.executeUpdate());
-            db(settings.getProperty("add.tableUserview"), new ArrayList<>(), pr -> pr.executeUpdate());
+//            db(settings.getProperty("add.tableCountry"), new ArrayList<>(), pr -> pr.executeUpdate());
+//            db(settings.getProperty("add.tableCity"), new ArrayList<>(), pr -> pr.executeUpdate());
+//            db(settings.getProperty("add.tableAdresHelp"), new ArrayList<>(), pr -> pr.executeUpdate());
+//            db(settings.getProperty("add.tableUserview"), new ArrayList<>(), pr -> pr.executeUpdate());
         } catch (Exception e) {
             e.printStackTrace();
         }
