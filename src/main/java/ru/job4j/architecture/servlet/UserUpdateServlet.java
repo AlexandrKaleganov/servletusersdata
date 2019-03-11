@@ -30,12 +30,12 @@ public class UserUpdateServlet extends HttpServlet {
         req.setCharacterEncoding("utf-8");
         try {
             req.setAttribute("u", DispatchDiapason.getInstance().access(req.getParameter("action"),
-                    new Users (req.getParameter("id"), req.getParameter("name"), req.getParameter("mail"), req.getParameter("password"),
-                             req.getParameter("country"), req.getParameter("city"))));
+                    new Users(req.getParameter("id"), req.getParameter("name"), req.getParameter("mail"), req.getParameter("password"),
+                            req.getParameter("country"), req.getParameter("city"))));
             req.getRequestDispatcher("/WEB-INF/views/edit.jsp").forward(req, resp);
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
-            req.setAttribute("err", new Err (e.getMessage(), LocalDateTime.now()));
+            req.setAttribute("err", new Err(e.getMessage(), LocalDateTime.now()));
             req.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(req, resp);
         }
     }

@@ -29,14 +29,14 @@ public class AdresListServlet extends HttpServlet {
         PrintWriter writer = new PrintWriter(resp.getOutputStream());
         ObjectMapper mapper = new ObjectMapper();
         try {
-            ArrayList<String> arrayList = DispatchDiapason.getInstance().access(req.getParameter("action"), new Users (req.getParameter("id"),
+            ArrayList<String> arrayList = DispatchDiapason.getInstance().access(req.getParameter("action"), new Users(req.getParameter("id"),
                     req.getParameter("name"), req.getParameter("mail"), req.getParameter("pass"),
                     req.getParameter("country"), req.getParameter("city")), new ArrayList<String>());
             writer.append(mapper.writeValueAsString(arrayList));
             writer.flush();
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
-            req.setAttribute("err", new Err (e.getMessage(), LocalDateTime.now()));
+            req.setAttribute("err", new Err(e.getMessage(), LocalDateTime.now()));
             req.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(req, resp);
         }
     }
