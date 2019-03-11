@@ -1,6 +1,6 @@
 <%@ page import="ru.job4j.architecture.DispatchDiapason" %>
 <%@ page import="java.util.Map" %>
-<%@ page import="ru.job4j.architecture.Users" %>
+<%@ page import="ru.job4j.architecture.model.Users" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Kaleganov Alxandr

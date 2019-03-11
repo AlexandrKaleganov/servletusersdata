@@ -11,6 +11,7 @@ package ru.job4j.architecture;
 
 import org.apache.log4j.Logger;
 import ru.job4j.architecture.err.FunEx;
+import ru.job4j.architecture.model.Users;
 
 import java.util.*;
 

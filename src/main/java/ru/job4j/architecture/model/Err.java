@@ -1,4 +1,4 @@
-package ru.job4j.architecture;
+package ru.job4j.architecture.model;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -17,7 +17,7 @@ public class Err {
         this.dateTime = datetime;
     }
 
-    Err(String error) {
+    public Err(String error) {
         this.error = error;
     }
 

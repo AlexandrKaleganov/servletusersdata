@@ -5,6 +5,7 @@ import ru.job4j.architecture.err.BiConEx;
 import ru.job4j.architecture.err.FunEx;
 import ru.job4j.architecture.err.TriplexConEx;
 import org.apache.log4j.Logger;
+import ru.job4j.architecture.model.Users;
 
 import java.io.InputStream;
 import java.sql.*;

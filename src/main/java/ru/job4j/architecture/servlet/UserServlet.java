@@ -1,4 +1,5 @@
-package ru.job4j.architecture;
+package ru.job4j.architecture.servlet;
+
 /**
  * @author Alexander Kaleganov (alexmur07@mail.ru)
  * @version 8.0
@@ -8,6 +9,10 @@ package ru.job4j.architecture;
 
 
 import org.apache.log4j.Logger;
+import ru.job4j.architecture.DbinitAdres;
+import ru.job4j.architecture.DispatchDiapason;
+import ru.job4j.architecture.model.Err;
+import ru.job4j.architecture.model.Users;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -63,7 +68,7 @@ public class UserServlet extends HttpServlet {
             StringWriter error = new StringWriter();
             e.printStackTrace(new PrintWriter(error));
             LOGGER.error(e.getMessage(), e);
-            req.setAttribute("err", new Err(error.toString(), LocalDateTime.now()));
+            req.setAttribute("err", new Err (error.toString(), LocalDateTime.now()));
             req.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(req, resp);
         }
     }

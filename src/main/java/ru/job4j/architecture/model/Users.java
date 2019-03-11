@@ -1,9 +1,6 @@
-package ru.job4j.architecture;
+package ru.job4j.architecture.model;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Objects;
-import java.util.Optional;
 
 public class Users {
     private String id;

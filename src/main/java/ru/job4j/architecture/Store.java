@@ -1,5 +1,7 @@
 package ru.job4j.architecture;
 
+import ru.job4j.architecture.model.Users;
+
 import java.util.List;
 
 /**

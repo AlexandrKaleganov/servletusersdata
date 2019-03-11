@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import ru.job4j.architecture.err.BiConEx;
 import ru.job4j.architecture.err.DatabaseException;
+import ru.job4j.architecture.model.Users;
 
 public class ValidateServiceTest {
 

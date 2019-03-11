@@ -1,10 +1,13 @@
-package ru.job4j.architecture;
+package ru.job4j.architecture.servlet;
+
 
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
+import ru.job4j.architecture.DbStore;
+import ru.job4j.architecture.model.Users;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
@@ -82,7 +85,7 @@ public class UserServletTest {
         this.fulltestServlet((db, servlet) -> {
             this.testdoPOST(servlet, "add");
             assertThat(db.findByMail(
-                    new Users("roo",  "name", "alexmur07", "alexmur07", "Russia", "Novosibirsk")).getMail(), is("alexmur07"));
+                    new Users ("roo",  "name", "alexmur07", "alexmur07", "Russia", "Novosibirsk")).getMail(), is("alexmur07"));
         });
     }
 

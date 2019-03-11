@@ -1,6 +1,7 @@
 package ru.job4j.architecture;
 
 import ru.job4j.architecture.err.DatabaseException;
+import ru.job4j.architecture.model.Users;
 
 import java.util.ArrayList;
 import java.util.List;

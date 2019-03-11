@@ -1,6 +1,8 @@
-package ru.job4j.architecture;
+package ru.job4j.architecture.servlet;
 
 import org.junit.Before;
+import ru.job4j.architecture.DbStore;
+import ru.job4j.architecture.model.Users;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,7 +25,7 @@ public class UserListServletTest {
         req = mock(HttpServletRequest.class);
         res = mock(HttpServletResponse.class);
         when(this.req.getRequestDispatcher("/WEB-INF/views/list.jsp")).thenReturn(this.disp);
-        when(this.req.getParameter("id")).thenReturn(DbStore.getInstance().findByMail(new Users("",
+        when(this.req.getParameter("id")).thenReturn(DbStore.getInstance().findByMail(new Users ("",
                 "name", "root", "root", "Russia", "Novosibirsk")).getId());
         when(this.req.getParameter("name")).thenReturn("root");
         when(this.req.getParameter("mail")).thenReturn("roott");

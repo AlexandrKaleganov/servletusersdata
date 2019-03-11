@@ -4,6 +4,7 @@ import org.hamcrest.core.Is;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.job4j.architecture.err.BiConEx;
+import ru.job4j.architecture.model.Users;
 
 import java.util.ArrayList;
 

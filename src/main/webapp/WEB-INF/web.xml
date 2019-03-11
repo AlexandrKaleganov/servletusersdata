@@ -30,7 +30,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>AdresListServlet</servlet-name>
-        <servlet-class>ru.job4j.architecture.AdresListServlet</servlet-class>
+        <servlet-class>ru.job4j.architecture.servlet.AdresListServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AdresListServlet</servlet-name>
@@ -89,7 +89,7 @@
 
     <servlet>
         <servlet-name>UserCreateServlet</servlet-name>
-        <servlet-class>ru.job4j.architecture.UserCreateServlet</servlet-class>
+        <servlet-class>ru.job4j.architecture.servlet.UserCreateServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>

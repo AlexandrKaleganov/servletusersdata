@@ -1,4 +1,4 @@
-<%@ page import="ru.job4j.architecture.Users" %><%--
+<%@ page import="ru.job4j.architecture.model.Users" %><%--
   Created by IntelliJ IDEA.
   User: Lis
   Date: 15 дек 18

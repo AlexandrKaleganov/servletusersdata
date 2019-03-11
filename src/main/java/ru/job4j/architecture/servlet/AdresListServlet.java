@@ -1,13 +1,15 @@
-package ru.job4j.architecture;
+package ru.job4j.architecture.servlet;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
+import ru.job4j.architecture.DispatchDiapason;
+import ru.job4j.architecture.model.Err;
+import ru.job4j.architecture.model.Users;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
@@ -27,14 +29,14 @@ public class AdresListServlet extends HttpServlet {
         PrintWriter writer = new PrintWriter(resp.getOutputStream());
         ObjectMapper mapper = new ObjectMapper();
         try {
-            ArrayList<String> arrayList = DispatchDiapason.getInstance().access(req.getParameter("action"), new Users(req.getParameter("id"),
+            ArrayList<String> arrayList = DispatchDiapason.getInstance().access(req.getParameter("action"), new Users (req.getParameter("id"),
                     req.getParameter("name"), req.getParameter("mail"), req.getParameter("pass"),
                     req.getParameter("country"), req.getParameter("city")), new ArrayList<String>());
             writer.append(mapper.writeValueAsString(arrayList));
             writer.flush();
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
-            req.setAttribute("err", new Err(e.getMessage(), LocalDateTime.now()));
+            req.setAttribute("err", new Err (e.getMessage(), LocalDateTime.now()));
             req.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(req, resp);
         }
     }
