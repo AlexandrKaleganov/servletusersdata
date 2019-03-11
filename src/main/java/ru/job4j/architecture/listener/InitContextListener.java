@@ -1,7 +1,24 @@
 package ru.job4j.architecture.listener;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.log4j.Logger;
+import ru.job4j.architecture.DbStore;
+import ru.job4j.architecture.DbinitAdres;
+import ru.job4j.architecture.err.BiConEx;
+import ru.job4j.architecture.err.FunEx;
+import ru.job4j.architecture.err.TriplexConEx;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.sql.*;
+import java.util.*;
 
 public class InitContextListener implements ServletContextListener {
 //    private final Map<Class<?>, TriplexConEx<Integer, PreparedStatement, Object>> dispat = new HashMap<>();

@@ -1,14 +1,13 @@
-package architecture;
+package ru.job4j.architecture;
 
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.log4j.Logger;
-import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Test;
-import ru.job4j.architecture.DbStore;
-import ru.job4j.architecture.UserServlet;
-import ru.job4j.architecture.Users;
+
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,9 +17,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.function.BiConsumer;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
-import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -48,9 +44,9 @@ public class UserServletTest {
     }
 
     private void fulltestServlet(BiConsumer<DbStore, UserServlet> test) {
-        DbStore dbStore = new DbStore (this.init());
+        DbStore dbStore = new DbStore(this.init());
         try {
-            UserServlet servlet = new UserServlet ();
+            UserServlet servlet = new UserServlet();
             test.accept(dbStore, servlet);
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
@@ -86,7 +82,7 @@ public class UserServletTest {
         this.fulltestServlet((db, servlet) -> {
             this.testdoPOST(servlet, "add");
             assertThat(db.findByMail(
-                    new Users ("roo",  "name", "alexmur07", "alexmur07", "Russia", "Novosibirsk")).getMail(), Is.is("alexmur07"));
+                    new Users("roo",  "name", "alexmur07", "alexmur07", "Russia", "Novosibirsk")).getMail(), is("alexmur07"));
         });
     }
 
@@ -97,14 +93,14 @@ public class UserServletTest {
             when(this.req.getParameter("id")).thenReturn(db.findAll().get(0).getId());
             when(this.req.getParameter("mail")).thenReturn("test");
             this.testdoPOST(servlet, "update");
-            assertThat(db.findByMail(new Users ("roo", "roo", "test", "test",  "Russia", "Novosibirsk")).getMail(), is("test"));
+            assertThat(db.findByMail(new Users("roo", "roo", "test", "test",  "Russia", "Novosibirsk")).getMail(), is("test"));
         });
     }
 
     @Test
     public void testDeleteUser() {
         this.fulltestServlet((db, servlet) -> {
-            when(this.req.getParameter("id")).thenReturn(db.findByMail(new Users ("roo",
+            when(this.req.getParameter("id")).thenReturn(db.findByMail(new Users("roo",
                     "name", "root", "root",  "Russia", "Novosibirsk")).getId());
             this.testdoPOST(servlet, "delete");
             assertThat(db.findAll().size(), is(0));

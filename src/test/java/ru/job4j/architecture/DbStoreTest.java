@@ -1,12 +1,10 @@
-package architecture;
+package ru.job4j.architecture;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.hamcrest.core.Is;
 import org.junit.Assert;
 import org.junit.Test;
-import ru.job4j.architecture.DbStore;
-import ru.job4j.architecture.Users;
 import ru.job4j.architecture.err.BiConEx;
 
 import java.io.BufferedReader;
@@ -18,6 +16,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Properties;
+
+import static org.hamcrest.MatcherAssert.assertThat;
 
 
 public class DbStoreTest {
@@ -34,8 +34,8 @@ public class DbStoreTest {
      * @param fank
      */
     private void alltestfunc(BiConEx<DbStore, Users> fank) {
-        Users users = new Users ("12", "sacha", "alexmur07", "password", "Russia", "Novosibirsk");
-        DbStore dbStore = new DbStore (this.init());
+        Users users = new Users("12", "sacha", "alexmur07", "password", "Russia", "Novosibirsk");
+        DbStore dbStore = new DbStore(this.init());
         Users expected = dbStore.add(users);
         try {
             fank.accept(dbStore, expected);
@@ -84,7 +84,7 @@ public class DbStoreTest {
     @Test
     public void findaaalTest() {
         this.alltestfunc((bd, exp) -> {
-            Assert.assertThat(bd.findAll().get(0), Is.is(exp));
+           assertThat(bd.findAll().get(0), Is.is(exp));
         });
     }
 
@@ -94,8 +94,8 @@ public class DbStoreTest {
     @Test
     public void updateTest() {
         this.alltestfunc((bd, exp) -> {
-            bd.update(new Users (exp.getId(), "lex", "lex07", "psw", "Russia", "Novosibirsk"));
-            Assert.assertThat(bd.findById(exp).getName(), Is.is("lex"));
+            bd.update(new Users(exp.getId(), "lex", "lex07", "psw", "Russia", "Novosibirsk"));
+            assertThat(bd.findById(exp).getName(), Is.is("lex"));
         });
     }
 
@@ -106,23 +106,23 @@ public class DbStoreTest {
     public void deleteTest() {
         this.alltestfunc((db, exp) -> {
             db.delete(exp).getId();
-            Assert.assertThat(db.findById(exp).getId(), Is.is(new Users ().getId()));
+            assertThat(db.findById(exp).getId(), Is.is(new Users().getId()));
         });
     }
 
     @Test
     public void findByLogin() {
         this.alltestfunc((db, exp) -> {
-            Assert.assertThat(db.findByMail(exp).getMail(), Is.is(exp.getMail()));
+            assertThat(db.findByMail(exp).getMail(), Is.is(exp.getMail()));
         });
     }
 
     @Test
     public void isCredentional() {
         this.alltestfunc((db, exp) -> {
-            Assert.assertThat(db.isCredentional(new Users ("12", "sacha", "alexmur07", "password", "Russia", "Novosibirsk")), Is.is(true));
-            Assert.assertThat(db.isCredentional(new Users ("12", "sacha", "alexmu07", "password", "Russia", "Novosibirsk")), Is.is(false));
-            Assert.assertThat(db.isCredentional(new Users ("12", "", "alexmur07", "ssword", "Russia", "Novosibirsk")), Is.is(false));
+            assertThat(db.isCredentional(new Users("12", "sacha", "alexmur07", "password", "Russia", "Novosibirsk")), Is.is(true));
+            assertThat(db.isCredentional(new Users("12", "sacha", "alexmu07", "password", "Russia", "Novosibirsk")), Is.is(false));
+            assertThat(db.isCredentional(new Users("12", "", "alexmur07", "ssword", "Russia", "Novosibirsk")), Is.is(false));
         });
     }
 
@@ -147,12 +147,12 @@ public class DbStoreTest {
     @Test
     public void findAllcountry() {
         this.alltestfunc((db, user) ->
-                Assert.assertThat(db.findAllcountry().get(1), Is.is("Russia")));
+                assertThat(db.findAllcountry().get(1), Is.is("Russia")));
     }
 
     @Test
     public void findAllcity() {
         this.alltestfunc((db, user) ->
-                Assert.assertThat(db.findAllcity(user).get(0), Is.is("Novosibirsk")));
+                assertThat(db.findAllcity(user).get(0), Is.is("Novosibirsk")));
     }
 }

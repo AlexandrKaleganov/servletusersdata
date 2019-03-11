@@ -13,9 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import java.io.*;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 
@@ -54,7 +52,7 @@ public class UserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         resp.setContentType("text/html;charset=UTF-8");
         req.setCharacterEncoding("UTF-8");
-        Users users = new Users (req.getParameter("id"), req.getParameter("name"),
+        Users users = new Users(req.getParameter("id"), req.getParameter("name"),
                 req.getParameter("mail"), req.getParameter("password"),
                 req.getParameter("country"), req.getParameter("city"));
         try {

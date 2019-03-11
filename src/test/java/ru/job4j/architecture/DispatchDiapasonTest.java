@@ -1,12 +1,11 @@
-package architecture;
+package ru.job4j.architecture;
 
 import org.hamcrest.core.Is;
 import org.junit.Assert;
 import org.junit.Test;
-import ru.job4j.architecture.DispatchDiapason;
-import ru.job4j.architecture.Users;
 import ru.job4j.architecture.err.BiConEx;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import static org.hamcrest.core.Is.is;
@@ -23,15 +22,15 @@ public class DispatchDiapasonTest {
 
 
     private void fulltest(BiConEx<DispatchDiapason, Users> fanc) {
-        var users = new Users ("1", "user", "user123", "passs", "Russia", "Novosibirsk");
-        var disp = new DispatchDiapason ().init();
+        var users = new Users("1", "user", "user123", "passs", "Russia", "Novosibirsk");
+        var disp = new DispatchDiapason().init();
         try {
             var exp = disp.access("add", users);
             fanc.accept(disp, exp);
         } catch (Exception e) {
         } finally {
             try {
-                disp.access("deleteAll", new Users (), new ArrayList<Users>());
+                disp.access("deleteAll", new Users(), new ArrayList<Users>());
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -56,7 +55,7 @@ public class DispatchDiapasonTest {
     @Test
     public void findall() {
         this.fulltest((disp, exp) -> {
-            Assert.assertThat(disp.access("findall", new Users (), new ArrayList<Users>()).get(0), Is.is(exp));
+            Assert.assertThat(disp.access("findall", new Users(), new ArrayList<Users>()).get(0), Is.is(exp));
         });
     }
 
@@ -66,7 +65,7 @@ public class DispatchDiapasonTest {
     @Test
     public void update() {
         this.fulltest((disp, exp) -> {
-            disp.access("update", new Users (exp.getId(), "вася", "vasia2", "pass", "Russia", "Novosibirsk"));
+            disp.access("update", new Users(exp.getId(), "вася", "vasia2", "pass", "Russia", "Novosibirsk"));
             Assert.assertThat(disp.access("findbyid", exp).getName(), is("вася"));
         });
     }

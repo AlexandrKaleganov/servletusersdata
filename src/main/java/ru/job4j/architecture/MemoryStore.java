@@ -2,6 +2,8 @@ package ru.job4j.architecture;
 
 import ru.job4j.architecture.err.FunEx;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -11,7 +13,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class MemoryStore implements Store<Users> {
     private final CopyOnWriteArrayList<Users> database = new CopyOnWriteArrayList<>();
-    private static final MemoryStore INSTANCE = new MemoryStore ();
+    private static final MemoryStore INSTANCE = new MemoryStore();
 
     public static MemoryStore getInstance() {
         return INSTANCE;
@@ -22,8 +24,8 @@ public class MemoryStore implements Store<Users> {
     }
 
     private void initRoot() {
-        if (this.findByMail(new Users ("0", "root", "root", "root", "root", "root")).getMail() == null) {
-            this.add(new Users ("0", "root", "root", "root", "root", "root"));
+        if (this.findByMail(new Users("0", "root", "root", "root", "root", "root")).getMail() == null) {
+            this.add(new Users("0", "root", "root", "root", "root", "root"));
         }
     }
 
@@ -54,7 +56,7 @@ public class MemoryStore implements Store<Users> {
     @Override
     public Users delete(Users users) {
         return this.db(users, Integer.parseInt(users.getId()), i ->
-                this.database.remove((int) i)).orElse(new Users ());
+                this.database.remove((int) i)).orElse(new Users());
     }
 
 
@@ -66,7 +68,7 @@ public class MemoryStore implements Store<Users> {
     @Override
     public Users findById(Users users) {
         return this.db(users, Integer.parseInt(users.getId()), i ->
-                this.database.get(i)).orElse(new Users ());
+                this.database.get(i)).orElse(new Users());
     }
 
     /**
@@ -97,7 +99,7 @@ public class MemoryStore implements Store<Users> {
                 }
             }
             return rs;
-        }).orElse(new Users ());
+        }).orElse(new Users());
     }
 
     @Override

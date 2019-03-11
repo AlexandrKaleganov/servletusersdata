@@ -12,9 +12,7 @@ package ru.job4j.architecture;
 import org.apache.log4j.Logger;
 import ru.job4j.architecture.err.FunEx;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class DispatchDiapason {
     /**
@@ -23,7 +21,7 @@ public class DispatchDiapason {
 
     private final Map<String, FunEx<Users, Optional>> dispatch = new HashMap<String, FunEx<Users, Optional>>();
     private final Validate validate = ValidateService.getInstance();
-    private final static DispatchDiapason INSTANCE = new DispatchDiapason ().init();
+    private final static DispatchDiapason INSTANCE = new DispatchDiapason().init();
     private static final Logger LOGGER = Logger.getLogger(DispatchDiapason.class);
 
     public static DispatchDiapason getInstance() {

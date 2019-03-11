@@ -1,10 +1,10 @@
 package ru.job4j.architecture;
 
 import org.apache.commons.dbcp2.BasicDataSource;
-import org.apache.log4j.Logger;
 import ru.job4j.architecture.err.BiConEx;
 import ru.job4j.architecture.err.FunEx;
 import ru.job4j.architecture.err.TriplexConEx;
+import org.apache.log4j.Logger;
 
 import java.io.InputStream;
 import java.sql.*;
@@ -14,7 +14,7 @@ public class DbStore implements Store<Users> {
     //не стал делать поле статичным, т.к. иначе не зню как прикрутить тесты
 
     private BasicDataSource source;
-    private static final DbStore INSTANCE = new DbStore ();
+    private static final DbStore INSTANCE = new DbStore();
     private final Map<Class<?>, TriplexConEx<Integer, PreparedStatement, Object>> dispat = new HashMap<>();
     private static final Logger LOGGER = Logger.getLogger(DbStore.class);
 
@@ -28,8 +28,8 @@ public class DbStore implements Store<Users> {
     }
 
     private void initRoot() {
-        if (this.findByMail(new Users ("0", "root", "root", "root", "", "")).getMail() == null) {
-            this.add(new Users ("0", "root", "root", "root", "", ""));
+        if (this.findByMail(new Users("0", "root", "root", "root", "", "")).getMail() == null) {
+            this.add(new Users("0", "root", "root", "root", "", ""));
         }
     }
     /**
@@ -226,7 +226,7 @@ public class DbStore implements Store<Users> {
                     try (ResultSet rs = ps.executeQuery()) {
                         while (rs.next()) {
                             if (!rs.getString("mail").equals("root")) {
-                                rsl.add(new Users (String.valueOf(rs.getInt("id")),
+                                rsl.add(new Users(String.valueOf(rs.getInt("id")),
                                         rs.getString("name"), rs.getString("mail"), rs.getString("pass"),
                                         rs.getString("country"), rs.getString("city")));
                             }
@@ -265,7 +265,7 @@ public class DbStore implements Store<Users> {
                     Users res = null;
                     try (ResultSet rs = ps.executeQuery()) {
                         if (rs.next()) {
-                            res = new Users (String.valueOf(rs.getInt("id")),
+                            res = new Users(String.valueOf(rs.getInt("id")),
                                     rs.getString("name"), rs.getString("mail"), "",
                                     rs.getString("country"), rs.getString("city"));
                         }
@@ -274,7 +274,7 @@ public class DbStore implements Store<Users> {
                     }
                     return res;
                 }
-        ).orElse(new Users ());
+        ).orElse(new Users());
     }
 
     /**
@@ -309,7 +309,7 @@ public class DbStore implements Store<Users> {
                     Users res = null;
                     try (ResultSet rs = ps.executeQuery()) {
                         if (rs.next()) {
-                            res = new Users (String.valueOf(rs.getInt("id")),
+                            res = new Users(String.valueOf(rs.getInt("id")),
                                     rs.getString("name"), rs.getString("mail"), "",
                                     rs.getString("country"), rs.getString("city"));
                         }
@@ -318,7 +318,7 @@ public class DbStore implements Store<Users> {
                     }
                     return res;
                 }
-        ).orElse(new Users ());
+        ).orElse(new Users());
     }
 
     /**

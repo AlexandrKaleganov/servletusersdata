@@ -17,7 +17,7 @@ import java.util.function.Predicate;
  */
 public class ValidateService implements Validate<Users> {
     private final Store<Users> logic = DbStore.getInstance();
-    private static final ValidateService INSTANCE = new ValidateService ();
+    private static final ValidateService INSTANCE = new ValidateService();
 
     public static ValidateService getInstance() {
         return INSTANCE;

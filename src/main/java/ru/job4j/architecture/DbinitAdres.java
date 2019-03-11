@@ -154,7 +154,7 @@ public class DbinitAdres {
     }
 
     public static void main(String[] args) {
-        DbinitAdres init = new DbinitAdres ();
+        DbinitAdres init = new DbinitAdres();
         init.addtoDataTableInfo();
     }
 }
