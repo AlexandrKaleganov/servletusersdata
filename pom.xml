@@ -13,6 +13,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -79,7 +85,7 @@
                     </execution>
                 </executions>
             </plugin>
-        </plugins>
+           </plugins>
     </build>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
@@ -161,7 +167,7 @@
             <properties>
                 <db.url>jdbc:postgresql://localhost/usersdata</db.url>
                 <db.username>postgres</db.username>
-                <db.password />
+                <db.password/>
                 <db.driver>org.postgresql.Driver</db.driver>
             </properties>
         </profile>
