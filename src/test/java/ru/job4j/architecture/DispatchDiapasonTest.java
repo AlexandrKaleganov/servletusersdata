@@ -5,7 +5,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import ru.job4j.architecture.err.BiConEx;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import static org.hamcrest.core.Is.is;
