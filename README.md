@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/AlexandrKaleganov/akaleganov_junior.svg?branch=master)](https://travis-ci.org/AlexandrKaleganov/akaleganov_junior)
-[![codecov](https://codecov.io/gh/AlexandrKaleganov/akaleganov_junior/branch/master/graph/badge.svg)](https://codecov.io/gh/AlexandrKaleganov/akaleganov_junior)
+[![Build Status](https://travis-ci.org/AlexandrKaleganov/servletusersdata.svg?branch=master)](https://travis-ci.org/AlexandrKaleganov/servletusersdata)
+[![codecov](https://codecov.io/gh/AlexandrKaleganov/servletusersdata/branch/master/graph/badge.svg)](https://codecov.io/gh/AlexandrKaleganov/servletusersdata)
 # servletusersdata
 написал простое приложение для добавления, редактирования и удаления пользователей
 базу данных адресов брал из интернета со страницы 
