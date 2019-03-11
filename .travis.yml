@@ -14,7 +14,9 @@ before_install:
 # Здесь используется сторонни сервис https://codecov.io/
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-
+env:
+  global:
+  - CODECOV_TOKEN="81b3149c-47c8-4236-aa63-c36e66e24167"
 # Отправлять уведомление на почту youremail@smtp.ru (Изменить на свою) если сборка упала
 notifications:
   email:
