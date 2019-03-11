@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+         http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         version="2.4">
+    <!--?????? , ??????? ??????????? ??? ???? ?????????-->
+
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>ru.job4j.architecture.AuthFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>*</url-pattern>
+    </filter-mapping>
+
+    <!--?????? ???????? ???????-->
+    <servlet>
+        <servlet-name>EchoServlet</servlet-name>
+        <servlet-class>ru.job4j.servlets.EchoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EchoServlet</servlet-name>
+        <url-pattern>/echo</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AdresListServlet</servlet-name>
+        <servlet-class>ru.job4j.architecture.AdresListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdresListServlet</servlet-name>
+        <url-pattern>/adres</url-pattern>
+    </servlet-mapping>
+    <!--<listener>-->
+        <!--<listener-class>ru.job4j.architecture.listener.InitContextListener</listener-class>-->
+    <!--</listener>-->
+    <!--<context-param>-->
+        <!--<param-name>login</param-name>-->
+        <!--<param-value>postgres</param-value>-->
+    <!--</context-param>-->
+    <!--<context-param>-->
+        <!--<param-name>password</param-name>-->
+        <!--<param-value>44444444</param-value>-->
+    <!--</context-param>-->
+    <!--<context-param>-->
+        <!--<param-name>url</param-name>-->
+        <!--<param-value>jdbc:postgresql://localhost:5432/usersdata</param-value>-->
+    <!--</context-param>-->
+    <!--<context-param>-->
+        <!--<param-name>driver</param-name>-->
+        <!--<param-value>org.postgresql.Driver</param-value>-->
+    <!--</context-param>-->
+
+    <!--????? ??????? ??????? ? ???? ?????????-->
+    <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>ru.job4j.architecture.UserServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UserSigninServlet</servlet-name>
+        <servlet-class>ru.job4j.architecture.UserSigninServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserSigninServlet</servlet-name>
+        <url-pattern>/signin</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UserUpdateServlet</servlet-name>
+        <servlet-class>ru.job4j.architecture.UserUpdateServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserUpdateServlet</servlet-name>
+        <url-pattern>/edit</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UserCreateServlet</servlet-name>
+        <servlet-class>ru.job4j.architecture.UserCreateServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserCreateServlet</servlet-name>
+        <url-pattern>/create</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UserListServlet</servlet-name>
+        <servlet-class>ru.job4j.architecture.UserListServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserListServlet</servlet-name>
+        <url-pattern>/list</url-pattern>
+    </servlet-mapping>
+
+</web-app>
