@@ -20,14 +20,7 @@
     </filter-mapping>
 
     <!--?????? ???????? ???????-->
-    <servlet>
-        <servlet-name>EchoServlet</servlet-name>
-        <servlet-class>ru.job4j.servlets.EchoServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>EchoServlet</servlet-name>
-        <url-pattern>/echo</url-pattern>
-    </servlet-mapping>
+
     <servlet>
         <servlet-name>AdresListServlet</servlet-name>
         <servlet-class>ru.job4j.architecture.servlet.AdresListServlet</servlet-class>
@@ -59,7 +52,7 @@
     <!--????? ??????? ??????? ? ???? ?????????-->
     <servlet>
         <servlet-name>UserServlet</servlet-name>
-        <servlet-class>ru.job4j.architecture.UserServlet</servlet-class>
+        <servlet-class>ru.job4j.architecture.servlet.UserServlet</servlet-class>
         <load-on-startup>0</load-on-startup>
     </servlet>
     <servlet-mapping>
@@ -69,7 +62,7 @@
 
     <servlet>
         <servlet-name>UserSigninServlet</servlet-name>
-        <servlet-class>ru.job4j.architecture.UserSigninServlet</servlet-class>
+        <servlet-class>ru.job4j.architecture.servlet.UserSigninServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
@@ -79,7 +72,7 @@
 
     <servlet>
         <servlet-name>UserUpdateServlet</servlet-name>
-        <servlet-class>ru.job4j.architecture.UserUpdateServlet</servlet-class>
+        <servlet-class>ru.job4j.architecture.servlet.UserUpdateServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
@@ -99,7 +92,7 @@
 
     <servlet>
         <servlet-name>UserListServlet</servlet-name>
-        <servlet-class>ru.job4j.architecture.UserListServlet</servlet-class>
+        <servlet-class>ru.job4j.architecture.servlet.UserListServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
