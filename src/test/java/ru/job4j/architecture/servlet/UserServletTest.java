@@ -1,7 +1,6 @@
 package ru.job4j.architecture.servlet;
 
 
-
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.log4j.Logger;
 import org.junit.Before;
@@ -57,6 +56,7 @@ public class UserServletTest {
             dbStore.deleteALL();
         }
     }
+
     private BasicDataSource init() {
         BasicDataSource source = new BasicDataSource();
         try {
@@ -71,6 +71,7 @@ public class UserServletTest {
         }
         return source;
     }
+
     private void testdoPOST(UserServlet servlet, String command) {
         when(this.req.getParameter("action")).thenReturn(command);
         try {
@@ -85,7 +86,7 @@ public class UserServletTest {
         this.fulltestServlet((db, servlet) -> {
             this.testdoPOST(servlet, "add");
             assertThat(db.findByMail(
-                    new Users ("roo",  "name", "alexmur07", "alexmur07", "Russia", "Novosibirsk")).getMail(), is("alexmur07"));
+                    new Users("roo", "name", "alexmur07", "alexmur07", "Russia", "Novosibirsk")).getMail(), is("alexmur07"));
         });
     }
 
@@ -96,7 +97,7 @@ public class UserServletTest {
             when(this.req.getParameter("id")).thenReturn(db.findAll().get(0).getId());
             when(this.req.getParameter("mail")).thenReturn("test");
             this.testdoPOST(servlet, "update");
-            assertThat(db.findByMail(new Users("roo", "roo", "test", "test",  "Russia", "Novosibirsk")).getMail(), is("test"));
+            assertThat(db.findByMail(new Users("roo", "roo", "test", "test", "Russia", "Novosibirsk")).getMail(), is("test"));
         });
     }
 
@@ -104,7 +105,7 @@ public class UserServletTest {
     public void testDeleteUser() {
         this.fulltestServlet((db, servlet) -> {
             when(this.req.getParameter("id")).thenReturn(db.findByMail(new Users("roo",
-                    "name", "root", "root",  "Russia", "Novosibirsk")).getId());
+                    "name", "root", "root", "Russia", "Novosibirsk")).getId());
             this.testdoPOST(servlet, "delete");
             assertThat(db.findAll().size(), is(0));
         });
