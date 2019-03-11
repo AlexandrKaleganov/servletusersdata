@@ -1,8 +1,10 @@
 [![Build Status](https://travis-ci.org/AlexandrKaleganov/servletusersdata.svg?branch=master)](https://travis-ci.org/AlexandrKaleganov/servletusersdata)
 [![codecov](https://codecov.io/gh/AlexandrKaleganov/servletusersdata/branch/master/graph/badge.svg)](https://codecov.io/gh/AlexandrKaleganov/servletusersdata)
 # servletusersdata
-написал простое приложение для добавления, редактирования и удаления пользователей
-базу данных адресов брал из интернета со страницы 
+для запуска проекта просто необходимо импортировать проект с мейвеном, стартануть чере TomCat сервер
+приложение будет доступно по адресу http://localhost:8080/
+написал простое приложение для добавления, редактирования и удаления пользователей.
+Базу данных адресов брал из интернета со страницы 
 https://raw.githubusercontent.com/David-Haim/CountriesToCitiesJSON/master/countriesToCities.json
 в формате json  получал HashMap<String, ArrayList<String>> адресов и добавлял их в базу данных
 для инициализации использовал класс architecture.DbinitAdres стартовый сервлет UserServlet, там же 

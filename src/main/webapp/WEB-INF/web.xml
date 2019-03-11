@@ -4,8 +4,25 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
          http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
          version="2.4">
-    <!--?????? , ??????? ??????????? ??? ???? ?????????-->
-
+    <listener>
+    <listener-class>ru.job4j.architecture.listener.InitContextListener</listener-class>
+    </listener>
+    <context-param>
+    <param-name>login</param-name>
+    <param-value>postgres</param-value>
+    </context-param>
+    <context-param>
+    <param-name>password</param-name>
+    <param-value>44444444</param-value>
+    </context-param>
+    <context-param>
+    <param-name>url</param-name>
+    <param-value>jdbc:postgresql://localhost:5432/usersdata</param-value>
+    </context-param>
+    <context-param>
+    <param-name>driver</param-name>
+    <param-value>org.postgresql.Driver</param-value>
+    </context-param>
     <filter>
         <filter-name>AuthFilter</filter-name>
         <filter-class>ru.job4j.architecture.AuthFilter</filter-class>
