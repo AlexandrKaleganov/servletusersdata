@@ -24,7 +24,7 @@ public class DbStore implements Store<Users> {
         this.init();
         this.dispat.put(Integer.class, (index, ps, value) -> ps.setInt(index, (Integer) value));
         this.dispat.put(String.class, (index, ps, value) -> ps.setString(index, (String) value));
-        this.addTable();
+//        this.addTable();
         this.initRoot();
     }
 
@@ -42,7 +42,7 @@ public class DbStore implements Store<Users> {
             try (InputStream in = DbStore.class.getClassLoader().getResourceAsStream("gradle.properties")) {
                 settings.load(in);
             }
-            db(settings.getProperty("add.tableUser"), new ArrayList<>(), pr -> pr.executeUpdate());
+//            db(settings.getProperty("add.tableUser"), new ArrayList<>(), pr -> pr.executeUpdate());
 //            db(settings.getProperty("add.tableCountry"), new ArrayList<>(), pr -> pr.executeUpdate());
 //            db(settings.getProperty("add.tableCity"), new ArrayList<>(), pr -> pr.executeUpdate());
 //            db(settings.getProperty("add.tableAdresHelp"), new ArrayList<>(), pr -> pr.executeUpdate());
@@ -77,7 +77,7 @@ public class DbStore implements Store<Users> {
         this.source = source;
         this.dispat.put(Integer.class, (index, ps, value) -> ps.setInt(index, (Integer) value));
         this.dispat.put(String.class, (index, ps, value) -> ps.setString(index, (String) value));
-        this.addTable();
+//        this.addTable();
         this.initRoot();
     }
 
