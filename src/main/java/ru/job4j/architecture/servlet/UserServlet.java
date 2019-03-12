@@ -28,22 +28,6 @@ public class UserServlet extends HttpServlet {
     private static final org.apache.log4j.Logger LOGGER = Logger.getLogger(UserServlet.class);
 
 
-    @Override
-    public void init() throws ServletException {
-        DbinitAdres adres = new DbinitAdres();
-        adres.addtoDataTableInfo();
-    }
-
-    @Override
-    public void destroy() {
-        DbinitAdres adres = new DbinitAdres();
-        try {
-            adres.deleteAllInfo();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     /**
      * закомментил за ненадобностью, т.к. за интерфейс теперь отвечает jsp
      */

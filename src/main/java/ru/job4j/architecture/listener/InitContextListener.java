@@ -25,18 +25,28 @@ public class InitContextListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-//        DbinitAdres adres = new DbinitAdres();
-//        adres.addtoDataTableInfo();
+        try {
+            Class.forName(sce.getServletContext().getInitParameter("driver"));
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        DbinitAdres adres = new DbinitAdres();
+        adres.addtoDataTableInfo();
         System.out.println("init addres");
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-//        DbinitAdres adres = new DbinitAdres();
-//        try {
-//            adres.deleteAllInfo();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            Class.forName(sce.getServletContext().getInitParameter("driver"));
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        DbinitAdres adres = new DbinitAdres();
+        try {
+            adres.deleteAllInfo();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
