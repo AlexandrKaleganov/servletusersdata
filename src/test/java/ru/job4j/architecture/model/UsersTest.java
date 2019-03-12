@@ -17,18 +17,19 @@ public class UsersTest {
         users.setId("12");
         users.setMail("login");
         users.setName("name");
-        Assert.assertThat(users, Is.is(new Users("12", "name", "login", "roo", "roo", "roo")));
+        Assert.assertThat(users, Is.is(new Users("12", "name", "login", "roo", "roo", "roo", "ADMIN")));
     }
 
     @Test
     public void isdatatest() throws IOException {
-        Users user = new Users("1", "name", "login", "as", "roo", "roo");
-        Users user1 = new Users("1", "name", "login", "as", "roo", "roo");
+        Users user = new Users("1", "name", "login", "as", "roo", "roo", "ADMIN");
+        Users user1 = new Users("1", "name", "login", "as", "roo", "roo", "ADMIN");
         StringBuilder builder = new StringBuilder("{\"id\":\"37\",\"name\":\"Калег\","
-                + "\"mail\":\"alexmur07\",\"password\":\"pass\",\"country\":\"country\",\"city\":\"city\"}");
+                + "\"mail\":\"alexmur07\",\"password\":\"pass\",\"country\":\"country\",\"city\":\"city\",\"roles\":\"ADMIN\"}");
         ObjectMapper mapper = new ObjectMapper();
         Users userrr = mapper.readValue(builder.toString(), Users.class);
         assertThat(userrr.getCountry(), Is.is("country"));
+        assertThat(userrr.getCountry(), Is.is("ADMIN"));
     }
 
 }

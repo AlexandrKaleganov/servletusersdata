@@ -24,8 +24,8 @@ public class MemoryStore implements Store<Users> {
     }
 
     private void initRoot() {
-        if (this.findByMail(new Users("0", "root", "root", "root", "root", "root")).getMail() == null) {
-            this.add(new Users("0", "root", "root", "root", "root", "root"));
+        if (this.findByMail(new Users("0", "root", "root", "root", "root", "root", "ADMIN")).getMail() == null) {
+            this.add(new Users("0", "root", "root", "root", "root", "root", "ADMIN"));
         }
     }
 

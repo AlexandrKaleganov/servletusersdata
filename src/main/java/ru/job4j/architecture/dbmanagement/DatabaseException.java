@@ -1,4 +1,4 @@
-package ru.job4j.architecture.err;
+package ru.job4j.architecture.dbmanagement;
 
 /**
  * Наша личная ошибка по работе с базой

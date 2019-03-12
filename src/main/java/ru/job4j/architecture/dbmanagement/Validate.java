@@ -7,7 +7,6 @@ package ru.job4j.architecture.dbmanagement;
  * иначе вылетает ошибка и она обрабатываестся
  */
 
-import ru.job4j.architecture.err.DatabaseException;
 import ru.job4j.architecture.model.Users;
 
 import java.util.List;

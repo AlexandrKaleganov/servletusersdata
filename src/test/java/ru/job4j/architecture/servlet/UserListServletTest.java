@@ -26,7 +26,7 @@ public class UserListServletTest {
         res = mock(HttpServletResponse.class);
         when(this.req.getRequestDispatcher("/WEB-INF/views/list.jsp")).thenReturn(this.disp);
         when(this.req.getParameter("id")).thenReturn(DbStore.getInstance().findByMail(new Users("",
-                "name", "root", "root", "Russia", "Novosibirsk")).getId());
+                "name", "root", "root", "Russia", "Novosibirsk", "ADMIN")).getId());
         when(this.req.getParameter("name")).thenReturn("root");
         when(this.req.getParameter("mail")).thenReturn("roott");
         when(this.req.getParameter("password")).thenReturn("root");

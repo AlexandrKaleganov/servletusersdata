@@ -14,7 +14,7 @@ import static org.hamcrest.core.Is.is;
 public class MemoryStoreTest {
 
     private void fulltest(BiConsumer<MemoryStore, Users> fank) {
-        Users users = new Users("12", "sacha", "alexmur07", "pass", "Russia", "Novosibirsk");
+        Users users = new Users("12", "sacha", "alexmur07", "pass", "Russia", "Novosibirsk", "ADMIN");
         MemoryStore store = MemoryStore.getInstance();
         Users expected = store.add(users);
         try {
@@ -34,7 +34,7 @@ public class MemoryStoreTest {
     @Test
     public void update() {
         this.fulltest((stor, exp) -> {
-            Users ex = stor.update(new Users(exp.getId(), "expected", "ale99", "", "Russia", "Novosibirsk"));
+            Users ex = stor.update(new Users(exp.getId(), "expected", "ale99", "", "Russia", "Novosibirsk", "ADMIN"));
             assertThat(ex.getName(), is("expected"));
         });
     }
@@ -72,9 +72,9 @@ public class MemoryStoreTest {
     public void isCredentional() {
         this.fulltest(((memoryStore, users) -> {
             Assert.assertThat(memoryStore.isCredentional(new Users("0",
-                    "", "alexmur07", "pass", "", "")), Is.is(true));
-            Assert.assertThat(memoryStore.isCredentional(new Users("0", "", "alexmu07", "pass", "Russia", "Novosibirsk")), Is.is(false));
-            Assert.assertThat(memoryStore.isCredentional(new Users("0", "", "alexmur07", "pas", "Russia", "Novosibirsk")), Is.is(false));
+                    "", "alexmur07", "pass", "", "", "ADMIN")), Is.is(true));
+            Assert.assertThat(memoryStore.isCredentional(new Users("0", "", "alexmu07", "pass", "Russia", "Novosibirsk", "ADMIN")), Is.is(false));
+            Assert.assertThat(memoryStore.isCredentional(new Users("0", "", "alexmur07", "pas", "Russia", "Novosibirsk", "ADMIN")), Is.is(false));
         }));
     }
 }

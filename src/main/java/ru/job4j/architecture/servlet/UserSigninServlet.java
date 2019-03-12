@@ -22,7 +22,7 @@ public class UserSigninServlet extends HttpServlet {
         try {
             if (DispatchDiapason.getInstance().access("isCredentional",
                     new Users("0", "nam", req.getParameter("mail"), req.getParameter("pass"),
-                            req.getParameter("country"), req.getParameter("city")),
+                            req.getParameter("country"), req.getParameter("city"), req.getParameter("roles")),
                     true)) {
                 req.getSession().setAttribute("login", req.getParameter("mail"));
                 resp.sendRedirect(String.format("%s/", req.getContextPath()));

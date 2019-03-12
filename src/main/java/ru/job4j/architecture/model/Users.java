@@ -9,6 +9,7 @@ public class Users {
     private String password;
     private String country;
     private String city;
+    private Roles roles;
 
     public void setPassword(String password) {
         this.password = password;
@@ -38,13 +39,14 @@ public class Users {
         this.city = city;
     }
 
-    public Users(String id, String name, String mail, String password, String country, String city) {
+    public Users(String id, String name, String mail, String password, String country, String city, String roles) {
         this.id = iscorrectedID(id);
         this.name = name;
         this.mail = mail;
         this.password = password;
         this.country = country;
         this.city = city;
+        this.roles = Roles.valueOf(roles);
     }
 
     public Users() {
@@ -63,6 +65,14 @@ public class Users {
             }
         }
         return rsl;
+    }
+
+    public Roles getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = Roles.valueOf(roles);
     }
 
     public String getId() {
@@ -88,7 +98,7 @@ public class Users {
     @Override
     public String toString() {
         return "Users{" + "id=" + this.id
-                + ", name=" + name + " , mail=" + mail + ", country=" + country + ", city=" + city + "}";
+                + ", name=" + name + " , mail=" + mail + ", country=" + country + ", city=" + city + ", roles=" + roles + "}";
     }
 
 

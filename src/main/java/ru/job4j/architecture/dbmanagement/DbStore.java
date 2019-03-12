@@ -29,10 +29,11 @@ public class DbStore implements Store<Users> {
     }
 
     private void initRoot() {
-        if (this.findByMail(new Users("0", "root", "root", "root", "", "")).getMail() == null) {
-            this.add(new Users("0", "root", "root", "root", "", ""));
+        if (this.findByMail(new Users("0", "root", "root", "root", "", "", "ADMIN")).getMail() == null) {
+            this.add(new Users("0", "root", "root", "root", "", "", "ADMIN"));
         }
     }
+
     /**
      * метод инициализации объекта
      */
@@ -210,7 +211,7 @@ public class DbStore implements Store<Users> {
                             if (!rs.getString("mail").equals("root")) {
                                 rsl.add(new Users(String.valueOf(rs.getInt("id")),
                                         rs.getString("name"), rs.getString("mail"), rs.getString("pass"),
-                                        rs.getString("country"), rs.getString("city")));
+                                        rs.getString("country"), rs.getString("city"), rs.getString("roles")));
                             }
                         }
                     } catch (SQLException e) {
@@ -249,7 +250,7 @@ public class DbStore implements Store<Users> {
                         if (rs.next()) {
                             res = new Users(String.valueOf(rs.getInt("id")),
                                     rs.getString("name"), rs.getString("mail"), "",
-                                    rs.getString("country"), rs.getString("city"));
+                                    rs.getString("country"), rs.getString("city"), rs.getString("roles"));
                         }
                     } catch (SQLException e) {
                         LOGGER.error(e.getMessage(), e);
@@ -293,7 +294,7 @@ public class DbStore implements Store<Users> {
                         if (rs.next()) {
                             res = new Users(String.valueOf(rs.getInt("id")),
                                     rs.getString("name"), rs.getString("mail"), "",
-                                    rs.getString("country"), rs.getString("city"));
+                                    rs.getString("country"), rs.getString("city"), rs.getString("roles"));
                         }
                     } catch (SQLException e) {
                         LOGGER.error(e.getMessage(), e);
@@ -305,6 +306,7 @@ public class DbStore implements Store<Users> {
 
     /**
      * получение списка всех стран из базы
+     *
      * @return
      */
     public List<String> findAllcountry() {
@@ -321,8 +323,10 @@ public class DbStore implements Store<Users> {
             return rsl;
         }).get();
     }
+
     /**
      * получение списка всех городов в сооответствии со страной из базы
+     *
      * @return
      */
     public List<String> findAllcity(Users country) {

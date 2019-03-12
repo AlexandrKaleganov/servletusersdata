@@ -35,7 +35,7 @@ public class DbStoreTest {
      * @param fank
      */
     private void alltestfunc(BiConEx<DbStore, Users> fank) {
-        Users users = new Users("12", "sacha", "alexmur07", "password", "Russia", "Novosibirsk");
+        Users users = new Users("12", "sacha", "alexmur07", "password", "Russia", "Novosibirsk", "ADMIN");
         DbStore dbStore = new DbStore(this.init());
         Users expected = dbStore.add(users);
         try {
@@ -95,7 +95,7 @@ public class DbStoreTest {
     @Test
     public void updateTest() {
         this.alltestfunc((bd, exp) -> {
-            bd.update(new Users(exp.getId(), "lex", "lex07", "psw", "Russia", "Novosibirsk"));
+            bd.update(new Users(exp.getId(), "lex", "lex07", "psw", "Russia", "Novosibirsk", "ADMIN"));
             assertThat(bd.findById(exp).getName(), Is.is("lex"));
         });
     }
@@ -121,9 +121,9 @@ public class DbStoreTest {
     @Test
     public void isCredentional() {
         this.alltestfunc((db, exp) -> {
-            assertThat(db.isCredentional(new Users("12", "sacha", "alexmur07", "password", "Russia", "Novosibirsk")), Is.is(true));
-            assertThat(db.isCredentional(new Users("12", "sacha", "alexmu07", "password", "Russia", "Novosibirsk")), Is.is(false));
-            assertThat(db.isCredentional(new Users("12", "", "alexmur07", "ssword", "Russia", "Novosibirsk")), Is.is(false));
+            assertThat(db.isCredentional(new Users("12", "sacha", "alexmur07", "password", "Russia", "Novosibirsk", "ADMIN")), Is.is(true));
+            assertThat(db.isCredentional(new Users("12", "sacha", "alexmu07", "password", "Russia", "Novosibirsk", "ADMIN")), Is.is(false));
+            assertThat(db.isCredentional(new Users("12", "", "alexmur07", "ssword", "Russia", "Novosibirsk", "ADMIN")), Is.is(false));
         });
     }
 

@@ -31,7 +31,7 @@ public class AdresListServlet extends HttpServlet {
         try {
             ArrayList<String> arrayList = DispatchDiapason.getInstance().access(req.getParameter("action"), new Users(req.getParameter("id"),
                     req.getParameter("name"), req.getParameter("mail"), req.getParameter("pass"),
-                    req.getParameter("country"), req.getParameter("city")), new ArrayList<String>());
+                    req.getParameter("country"), req.getParameter("city"), req.getParameter("roles")), new ArrayList<String>());
             writer.append(mapper.writeValueAsString(arrayList));
             writer.flush();
         } catch (Exception e) {
