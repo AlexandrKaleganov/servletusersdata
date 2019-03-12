@@ -1,4 +1,5 @@
-package ru.job4j.architecture;
+package ru.job4j.architecture.dbmanagement;
+
 /**
  * класс диспетчер комманд
  * в хешмапе содержаться три команды

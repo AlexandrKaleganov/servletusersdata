@@ -1,4 +1,5 @@
-package ru.job4j.architecture;
+package ru.job4j.architecture.dbmanagement;
+
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import ru.job4j.architecture.err.BiConEx;

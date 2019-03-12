@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class AuthFilter implements Filter {
-    private static final Logger LOGGER = Logger.getLogger(DispatchDiapason.class);
+    private static final Logger LOGGER = Logger.getLogger(AuthFilter.class);
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

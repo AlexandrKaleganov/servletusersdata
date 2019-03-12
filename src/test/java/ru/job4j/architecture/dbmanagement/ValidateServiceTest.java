@@ -1,8 +1,10 @@
-package ru.job4j.architecture;
+package ru.job4j.architecture.dbmanagement;
 
 import org.hamcrest.core.Is;
 import org.junit.Assert;
 import org.junit.Test;
+import ru.job4j.architecture.dbmanagement.Validate;
+import ru.job4j.architecture.dbmanagement.ValidateService;
 import ru.job4j.architecture.err.BiConEx;
 import ru.job4j.architecture.err.DatabaseException;
 import ru.job4j.architecture.model.Users;

@@ -5,7 +5,7 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
-import ru.job4j.architecture.DbStore;
+import ru.job4j.architecture.dbmanagement.DbStore;
 import ru.job4j.architecture.model.Users;
 
 import static org.hamcrest.core.Is.is;
@@ -61,7 +61,7 @@ public class UserServletTest {
         BasicDataSource source = new BasicDataSource();
         try {
             source.setDriverClassName("org.postgresql.Driver");
-            source.setUrl("jdbc:postgresql://127.0.0.1:5432/usersdata");
+            source.setUrl("jdbc:postgresql://127.0.0.1:5432/usersdat");
             source.setUsername("postgres");
             source.setMinIdle(5);
             source.setMaxIdle(10);

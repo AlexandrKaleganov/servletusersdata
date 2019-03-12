@@ -1,9 +1,10 @@
-package ru.job4j.architecture;
+package ru.job4j.architecture.dbmanagement;
 
 import org.hamcrest.core.Is;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.job4j.architecture.model.Users;
+
 
 import java.util.function.BiConsumer;
 

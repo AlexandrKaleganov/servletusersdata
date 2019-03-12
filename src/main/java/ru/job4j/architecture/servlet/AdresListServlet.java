@@ -2,7 +2,7 @@ package ru.job4j.architecture.servlet;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
-import ru.job4j.architecture.DispatchDiapason;
+import ru.job4j.architecture.dbmanagement.DispatchDiapason;
 import ru.job4j.architecture.model.Err;
 import ru.job4j.architecture.model.Users;
 

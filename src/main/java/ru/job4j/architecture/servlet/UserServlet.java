@@ -9,8 +9,7 @@ package ru.job4j.architecture.servlet;
 
 
 import org.apache.log4j.Logger;
-import ru.job4j.architecture.DbinitAdres;
-import ru.job4j.architecture.DispatchDiapason;
+import ru.job4j.architecture.dbmanagement.DispatchDiapason;
 import ru.job4j.architecture.model.Err;
 import ru.job4j.architecture.model.Users;
 
@@ -19,7 +18,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.sql.SQLException;
 import java.time.LocalDateTime;
 
 

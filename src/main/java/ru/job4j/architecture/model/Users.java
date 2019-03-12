@@ -1,6 +1,5 @@
 package ru.job4j.architecture.model;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class Users {
@@ -10,7 +9,6 @@ public class Users {
     private String password;
     private String country;
     private String city;
-    private ArrayList<String> roles = new ArrayList<>();
 
     public void setPassword(String password) {
         this.password = password;
@@ -47,7 +45,6 @@ public class Users {
         this.password = password;
         this.country = country;
         this.city = city;
-//        this.roles.add(roles);
     }
 
     public Users() {
@@ -83,7 +80,6 @@ public class Users {
     public void setName(String name) {
         this.name = name;
     }
-
 
     public String getPassword() {
         return password;

@@ -1,4 +1,4 @@
-package ru.job4j.architecture;
+package ru.job4j.architecture.dbmanagement;
 
 import ru.job4j.architecture.model.Users;
 

@@ -57,7 +57,6 @@ public class Err {
 
     @Override
     public String toString() {
-        return "Err{"
-                + "error='" + error + '\'' + ", dateTime=" + dateTime + '}';
+        return "Err{" + "error='" + error + '\'' + ", dateTime=" + dateTime + '}';
     }
 }
