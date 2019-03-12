@@ -29,7 +29,7 @@ public class UsersTest {
         ObjectMapper mapper = new ObjectMapper();
         Users userrr = mapper.readValue(builder.toString(), Users.class);
         assertThat(userrr.getCountry(), Is.is("country"));
-        assertThat(userrr.getCountry(), Is.is("ADMIN"));
+        assertThat(userrr.getRoles(), Is.is(Roles.valueOf("ADMIN")));
     }
 
 }

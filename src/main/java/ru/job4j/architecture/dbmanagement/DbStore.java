@@ -8,6 +8,7 @@ import ru.job4j.architecture.err.TriplexConEx;
 import org.apache.log4j.Logger;
 import ru.job4j.architecture.model.Users;
 
+import java.beans.IntrospectionException;
 import java.io.InputStream;
 import java.sql.*;
 import java.util.*;
@@ -158,6 +159,7 @@ public class DbStore implements Store<Users> {
 
     @Override
     public Users add(Users user) {
+        Integer roles = isIndex("select * from roles where roles = ?", Arrays.asList(user.getRoles().toString()));
         Integer country = isIndex("select * from country where country = ?", Arrays.asList(user.getCountry()));
         Integer city = isIndex("select * from city where city = ?", Arrays.asList(user.getCity()));
         country = isnotNullId("insert into country(country) values(?)", Arrays.asList(user.getCountry()), country);
@@ -178,6 +180,7 @@ public class DbStore implements Store<Users> {
                 }
         );
         this.updateInfo("insert into adreshelp(user_id, country_id, city_id) values(?, ?, ?)", Arrays.asList(Integer.valueOf(user.getId()), country, city));
+        this.updateInfo("insert into rolesusers(users_id, roles_id) values(?, ?)", Arrays.asList(Integer.valueOf(user.getId()), roles));
         return user;
     }
 
@@ -195,6 +198,7 @@ public class DbStore implements Store<Users> {
     @Override
     public Users delete(Users users) {
         Users rsl = this.findById(users);
+        this.updateInfo("delete from rolesusers where users_id = ? ", Arrays.asList(Integer.valueOf(users.getId())));
         this.updateInfo("delete from adreshelp where user_id = ?", Arrays.asList(Integer.valueOf(users.getId())));
         this.updateInfo("delete from users where users.id = ? ", Arrays.asList(Integer.valueOf(users.getId())));
         return rsl;
@@ -227,6 +231,7 @@ public class DbStore implements Store<Users> {
      */
     @Override
     public List<Users> deleteALL() {
+        this.db("delete from rolesusers;", new ArrayList<>(), pr -> pr.executeUpdate());
         this.db("delete from adreshelp;", new ArrayList<>(), pr -> pr.executeUpdate());
         this.db("delete from city;", new ArrayList<>(), pr -> pr.executeUpdate());
         this.db("delete from country;", new ArrayList<>(), pr -> pr.executeUpdate());
