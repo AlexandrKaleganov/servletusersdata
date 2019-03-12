@@ -1,13 +1,19 @@
 [![Build Status](https://travis-ci.org/AlexandrKaleganov/servletusersdata.svg?branch=master)](https://travis-ci.org/AlexandrKaleganov/servletusersdata)
 [![codecov](https://codecov.io/gh/AlexandrKaleganov/servletusersdata/branch/master/graph/badge.svg)](https://codecov.io/gh/AlexandrKaleganov/servletusersdata)
 # servletusersdata
-для запуска проекта просто необходимо импортировать проект с мейвеном, стартануть чере TomCat сервер
+для запуска проекта просто необходимо импортировать проект с мейвеном, 
+также необходима база данных имя usersdata пароль к ней можно указать свой но надо будет отредактировать 
+**в файле gradle.properties
+db.password=444444**
+остальные настройки бд находятся тамже
+**для тестов настрокий регулируются в pom.xml** 
+стартануть чере TomCat сервер
 приложение будет доступно по адресу http://localhost:8080/
 написал простое приложение для добавления, редактирования и удаления пользователей.
 Базу данных адресов брал из интернета со страницы 
 https://raw.githubusercontent.com/David-Haim/CountriesToCitiesJSON/master/countriesToCities.json
 в формате json  получал HashMap<String, ArrayList<String>> адресов и добавлял их в базу данных
-для инициализации использовал класс architecture.DbinitAdres стартовый сервлет UserServlet, там же 
+для инициализации использовал класс architecture.dbmanagment.DbinitAdres стартовый сервлет UserServlet, там же 
 в методе init инициализируются адреса, логин и пароль по умолчанияю используется root root 
 автоматом добавляется в базу если отсутствует в классе DbStore 
 при добавлении и редактировании пользователя используется база адресов городов и стран, страны динамически подгружаются

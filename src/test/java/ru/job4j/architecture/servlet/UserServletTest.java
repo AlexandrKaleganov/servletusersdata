@@ -61,7 +61,7 @@ public class UserServletTest {
         BasicDataSource source = new BasicDataSource();
         try {
             source.setDriverClassName("org.postgresql.Driver");
-            source.setUrl("jdbc:postgresql://127.0.0.1:5432/usersdat");
+            source.setUrl("jdbc:postgresql://127.0.0.1:5432/usersdata");
             source.setUsername("postgres");
             source.setMinIdle(5);
             source.setMaxIdle(10);

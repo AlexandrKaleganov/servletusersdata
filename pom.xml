@@ -167,7 +167,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <db.url>jdbc:postgresql://localhost/usersdat</db.url>
+                <db.url>jdbc:postgresql://localhost/usersdata</db.url>
                 <db.username>postgres</db.username>
                 <db.password/>
                 <db.driver>org.postgresql.Driver</db.driver>
