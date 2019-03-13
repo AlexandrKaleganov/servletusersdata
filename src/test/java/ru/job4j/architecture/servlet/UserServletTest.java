@@ -40,6 +40,7 @@ public class UserServletTest {
         when(this.req.getParameter("password")).thenReturn("pass12");
         when(this.req.getParameter("country")).thenReturn("Country");
         when(this.req.getParameter("city")).thenReturn("City");
+        when(this.req.getParameter("roles")).thenReturn("ADMIN");
         when(this.req.getReader()).thenReturn(mock(BufferedReader.class));
 
 

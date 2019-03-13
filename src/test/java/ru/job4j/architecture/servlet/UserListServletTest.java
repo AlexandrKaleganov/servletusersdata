@@ -32,6 +32,7 @@ public class UserListServletTest {
         when(this.req.getParameter("password")).thenReturn("root");
         when(this.req.getParameter("country")).thenReturn("country");
         when(this.req.getParameter("city")).thenReturn("city");
+        when(this.req.getParameter("roles")).thenReturn("ADMIN");
 
     }
 

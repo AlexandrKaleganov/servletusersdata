@@ -10,6 +10,7 @@ import static org.junit.Assert.*;
 
 public class DbinitAdresTest {
 
+    
     @Test
     public void addtoDataTableInfo() throws SQLException {
         DbinitAdres adres = new DbinitAdres();
