@@ -25,6 +25,8 @@ public interface Validate<E> {
 
     List<E> deleteALL();
 
+    E findByMail(E users);
+
     List<String> findAllcountry();
 
     List<String> findAllcity(E adres);

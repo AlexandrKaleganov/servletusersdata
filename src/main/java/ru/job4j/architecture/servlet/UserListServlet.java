@@ -30,10 +30,7 @@ public class UserListServlet extends HttpServlet {
 
         try {
             req.setAttribute("list", DispatchDiapason.getInstance().access("findall",
-                    new Users(req.getParameter("id"),
-                            req.getParameter("name"), req.getParameter("mail"), req.getParameter("pass"),
-                            req.getParameter("country"), req.getParameter("city"), req.getParameter("roles")
-                    ), new ArrayList<Users>()));
+                    new Users(), new ArrayList<Users>()));
             req.getRequestDispatcher("/WEB-INF/views/list.jsp").forward(req, resp);
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);

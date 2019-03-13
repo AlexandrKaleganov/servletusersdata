@@ -23,7 +23,6 @@ public class InitContextListener implements ServletContextListener {
         }
         DbinitAdres adres = new DbinitAdres();
         adres.addtoDataTableInfo();
-        System.out.println("init addres");
     }
 
     @Override

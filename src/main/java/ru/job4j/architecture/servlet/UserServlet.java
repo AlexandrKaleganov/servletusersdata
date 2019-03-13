@@ -51,7 +51,7 @@ public class UserServlet extends HttpServlet {
             StringWriter error = new StringWriter();
             e.printStackTrace(new PrintWriter(error));
             LOGGER.error(e.getMessage(), e);
-            req.setAttribute("err", new Err(error.toString(), LocalDateTime.now()));
+            req.setAttribute("err", new Err(e.getMessage(), LocalDateTime.now()));
             req.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(req, resp);
         }
     }

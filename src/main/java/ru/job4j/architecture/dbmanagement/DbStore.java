@@ -273,6 +273,7 @@ public class DbStore implements Store<Users> {
      */
     @Override
     public boolean isCredentional(Users users) {
+        System.out.println(users.getMail() + " " + users.getPassword());
         return this.db(
                 "select * from users where mail = ? and pass = ?", Arrays.asList(users.getMail(), users.getPassword()),
                 ps -> {

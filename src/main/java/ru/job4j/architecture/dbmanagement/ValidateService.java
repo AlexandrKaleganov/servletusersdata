@@ -90,6 +90,11 @@ public class ValidateService implements Validate<Users> {
         return this.logic.deleteALL();
     }
 
+    @Override
+    public Users findByMail(Users users) {
+        return this.logic.findByMail(users);
+    }
+
     /**
      * функциональный метод на нём будут основаны наши проверки
      *
@@ -134,6 +139,7 @@ public class ValidateService implements Validate<Users> {
     public ArrayList<String> findAllcountry() {
         return (ArrayList<String>) this.logic.findAllcountry();
     }
+
     public ArrayList<String> findAllcity(Users country) {
         return (ArrayList<String>) this.logic.findAllcity(country);
     }

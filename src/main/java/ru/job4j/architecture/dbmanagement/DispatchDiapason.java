@@ -44,24 +44,21 @@ public class DispatchDiapason {
                 Optional.of(this.validate.update(users))
         );
         this.dispatch.put("delete", (users) ->
-                Optional.of(this.validate.delete(users))
-        );
+                Optional.of(this.validate.delete(users)));
         this.dispatch.put("findall", (users) ->
-                Optional.of(this.validate.findAll())
-        );
+                Optional.of(this.validate.findAll()));
         this.dispatch.put("findbyid", (users) ->
-                Optional.of(this.validate.findById(users))
-
-        );
+                Optional.of(this.validate.findById(users)));
         this.dispatch.put("deleteAll", (users) ->
-                Optional.of(this.validate.deleteALL())
-        );
+                Optional.of(this.validate.deleteALL()));
         this.dispatch.put("isCredentional", (users) ->
                 Optional.of(this.validate.isCredentional((Users) users)));
         this.dispatch.put("findAllcountry", (users) ->
                 Optional.of(this.validate.findAllcountry()));
         this.dispatch.put("findAllcity", (users) ->
                 Optional.of(this.validate.findAllcity(users)));
+        this.dispatch.put("findbyMail", (users) ->
+                Optional.of(this.validate.findByMail(users)));
         return this;
     }
 
