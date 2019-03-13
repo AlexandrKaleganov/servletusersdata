@@ -8,7 +8,7 @@ jdk:
 services:
 - postgresql
 before_install:
-- psql -c 'create database usersdat;' -U postgres
+- psql -c 'create database usersdata;' -U postgres
 
 # после выполнения сборки запустить скрипт, который будет собирать статистику по JaCoCo
 # Здесь используется сторонни сервис https://codecov.io/
