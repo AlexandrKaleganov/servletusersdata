@@ -27,7 +27,7 @@ public class UserSigninServlet extends HttpServlet {
                     temp,
                     true)) {
                 req.getSession().setAttribute("login", req.getParameter("mail"));
-                req.setAttribute("roles", DispatchDiapason.getInstance().access("findbyMail", temp).getRoles());
+                req.getSession().setAttribute("roles", DispatchDiapason.getInstance().access("findbyMail", temp).getRoles());
                 resp.sendRedirect(String.format("%s/", req.getContextPath()));
             } else {
                 req.setAttribute("err", new Err("error login and password"));

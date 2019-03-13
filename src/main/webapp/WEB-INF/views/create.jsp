@@ -32,7 +32,7 @@
         $(document).ready(function () {
             $.ajax({
                 type: "POST",
-                url: "./adres",
+                url: "./stringlist",
                 data:{action: "findAllcountry"},
                 success: function (data) {
                     console.log(data);
@@ -42,11 +42,24 @@
                 },
             });
         });
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                url: "./stringlist",
+                data:{action: "findAllroles"},
+                success: function (data) {
+                    console.log(data);
+                    for (var i = 0; i < data.length; i++) {
+                        $("#roles option:last").after("<option>" + data[i] + "</option>");
+                    }
+                },
+            });
+        });
         function cityList() {
             console.log($("#country").val());
             $.ajax({
                 type:"POST",
-                url:"./adres",
+                url:"./stringlist",
                 data:{action:"findAllcity", country:$("#country").val()},
                 success:function (data) {
                     for (var i = 0; i < data.length; i++) {
@@ -67,7 +80,7 @@
 
         function valid() {
             return !(isValid($("#name"), "") + isValid($("#mail"), "") + isValid($("#password"), "")
-                + isValid($("#country"), "") + isValid($("#city"), ""));
+                + isValid($("#country"), "") + isValid($("#city"), "")+ isValid($("#roles"), ""));
         };
     </script>
 </head>
@@ -119,10 +132,15 @@
                 <option value=""></option>
             </select>
         </div>
+        <div class="form-group">
+            <label for="roles">Роли:</label>
+            <select class="form-control" name="roles" title="Enter attribut dostupa." id="roles">
+                <option value=""></option>
+            </select>
+        </div>
         <button type="submit" name="action" value="add" class="btn btn-default" onclick="return valid();">Submit
         </button>
     </form>
-
 </div>
 </body>
 </html>

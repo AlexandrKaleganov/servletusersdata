@@ -28,11 +28,11 @@
 
     <servlet>
         <servlet-name>AdresListServlet</servlet-name>
-        <servlet-class>ru.job4j.architecture.servlet.AdresListServlet</servlet-class>
+        <servlet-class>ru.job4j.architecture.servlet.StringListServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AdresListServlet</servlet-name>
-        <url-pattern>/adres</url-pattern>
+        <url-pattern>/stringlist</url-pattern>
     </servlet-mapping>
         <!--????? ??????? ??????? ? ???? ?????????-->
     <servlet>

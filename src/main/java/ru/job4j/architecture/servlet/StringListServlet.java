@@ -15,8 +15,11 @@ import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class AdresListServlet extends HttpServlet {
-    private static final org.apache.log4j.Logger LOGGER = Logger.getLogger(AdresListServlet.class);
+/**
+ * сервлет для получения списка стрингов, (страны, города, роли)
+ */
+public class StringListServlet extends HttpServlet {
+    private static final org.apache.log4j.Logger LOGGER = Logger.getLogger(StringListServlet.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,10 +31,11 @@ public class AdresListServlet extends HttpServlet {
         resp.setContentType("text/json; charset=utf-8");
         PrintWriter writer = new PrintWriter(resp.getOutputStream());
         ObjectMapper mapper = new ObjectMapper();
+        Users temp = new Users();
+        temp.setRoles(req.getSession().getAttribute("roles").toString());
+        temp.setCountry(req.getParameter("country"));
         try {
-            ArrayList<String> arrayList = DispatchDiapason.getInstance().access(req.getParameter("action"), new Users(req.getParameter("id"),
-                    req.getParameter("name"), req.getParameter("mail"), req.getParameter("pass"),
-                    req.getParameter("country"), req.getParameter("city"), "USER"), new ArrayList<String>());
+            ArrayList<String> arrayList = DispatchDiapason.getInstance().access(req.getParameter("action"), temp, new ArrayList<String>());
             writer.append(mapper.writeValueAsString(arrayList));
             writer.flush();
         } catch (Exception e) {

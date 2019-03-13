@@ -27,7 +27,6 @@ public class UserListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/text;charset=utf-8");
         req.setCharacterEncoding("utf-8");
-
         try {
             req.setAttribute("list", DispatchDiapason.getInstance().access("findall",
                     new Users(), new ArrayList<Users>()));
