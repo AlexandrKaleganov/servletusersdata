@@ -24,9 +24,13 @@ public interface Store<T> {
 
     T findByMail(T users);
 
+    boolean isCredentional(Users users);
+
     List<String> findAllcountry();
 
     List<String> findAllcity(T country);
 
-    boolean isCredentional(Users users);
+
+    List<String> findAllroles();
+
 }

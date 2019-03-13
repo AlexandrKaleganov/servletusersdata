@@ -59,6 +59,8 @@ public class DispatchDiapason {
                 Optional.of(this.validate.findAllcity(users)));
         this.dispatch.put("findbyMail", (users) ->
                 Optional.of(this.validate.findByMail(users)));
+        this.dispatch.put("findAllroles", (users) ->
+                Optional.of(this.validate.findAllroles(users.getRoles().toString())));
         return this;
     }
 

@@ -10,11 +10,6 @@ import java.io.IOException;
 public class AuthFilter implements Filter {
     private static final Logger LOGGER = Logger.getLogger(AuthFilter.class);
 
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-
-    }
-
     /**
      * как я это понял
      *
@@ -44,10 +39,4 @@ public class AuthFilter implements Filter {
             chain.doFilter(req, res);   //а вот если всё пучком и запрос не на страницу авторизации и сессия содержит логин то фильтр нас пропускает куда угодно
         }
     }
-
-    @Override
-    public void destroy() {
-
-    }
-
 }

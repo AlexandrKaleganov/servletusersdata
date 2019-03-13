@@ -57,7 +57,6 @@ public class DbStoreTest {
             source.setDriverClassName(settings.getProperty("db.driver"));
             source.setUrl(settings.getProperty("db.host"));
             source.setUsername(settings.getProperty("db.login"));
-//            source.setPassword("");
             source.setMinIdle(5);
             source.setMaxIdle(10);
             source.setMaxOpenPreparedStatements(100);
@@ -85,7 +84,7 @@ public class DbStoreTest {
     @Test
     public void findaaalTest() {
         this.alltestfunc((bd, exp) -> {
-           assertThat(bd.findAll().get(0), Is.is(exp));
+            assertThat(bd.findAll().get(0), Is.is(exp));
         });
     }
 
@@ -155,5 +154,13 @@ public class DbStoreTest {
     public void findAllcity() {
         this.alltestfunc((db, user) ->
                 assertThat(db.findAllcity(user).get(0), Is.is("Novosibirsk")));
+    }
+
+    @Test
+    public void findAllroles() {
+        this.alltestfunc((db, us) -> {
+            assertThat(db.findAllroles().get(0), Is.is("ADMIN"));
+            assertThat(db.findAllroles().get(1), Is.is("USER"));
+        });
     }
 }

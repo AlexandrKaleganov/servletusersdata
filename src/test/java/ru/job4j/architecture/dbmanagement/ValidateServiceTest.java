@@ -6,6 +6,8 @@ import org.junit.Test;
 import ru.job4j.architecture.err.BiConEx;
 import ru.job4j.architecture.model.Users;
 
+import java.util.ArrayList;
+
 public class ValidateServiceTest {
 
     private void fulltest(BiConEx<Validate<Users>, Users> test) throws Exception {
@@ -106,6 +108,18 @@ public class ValidateServiceTest {
     public void findAllcity() throws Exception {
         this.fulltest((val, exp) -> {
             Assert.assertThat(val.findAllcity(exp).get(0), Is.is("root"));
+        });
+    }
+
+    @Test
+    public void findAllroles() throws Exception {
+        this.fulltest((val, exp) -> {
+            ArrayList<String> rsl = (ArrayList<String>) val.findAllroles("ADMIN");
+            Assert.assertThat(rsl.get(0), Is.is("ADMIN"));
+            Assert.assertThat(rsl.get(1), Is.is("USER"));
+            ArrayList<String> rsl2 = (ArrayList<String>) val.findAllroles("USER");
+            Assert.assertThat(rsl2.size(), Is.is(1));
+            Assert.assertThat(rsl2.get(0), Is.is("USER"));
         });
     }
 }

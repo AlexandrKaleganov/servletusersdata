@@ -8,14 +8,12 @@ import ru.job4j.architecture.err.TriplexConEx;
 import org.apache.log4j.Logger;
 import ru.job4j.architecture.model.Users;
 
-import java.beans.IntrospectionException;
 import java.io.InputStream;
 import java.sql.*;
 import java.util.*;
 
 public class DbStore implements Store<Users> {
     //не стал делать поле статичным, т.к. иначе не зню как прикрутить тесты
-
     private BasicDataSource source;
     private static final DbStore INSTANCE = new DbStore();
     private final Map<Class<?>, TriplexConEx<Integer, PreparedStatement, Object>> dispat = new HashMap<>();
@@ -265,30 +263,6 @@ public class DbStore implements Store<Users> {
         ).orElse(new Users());
     }
 
-    /**
-     * проверяет есть ли пользователь с таким логином и паролем
-     *
-     * @param users
-     * @return
-     */
-    @Override
-    public boolean isCredentional(Users users) {
-        System.out.println(users.getMail() + " " + users.getPassword());
-        return this.db(
-                "select * from users where mail = ? and pass = ?", Arrays.asList(users.getMail(), users.getPassword()),
-                ps -> {
-                    Boolean res = false;
-                    try (ResultSet rs = ps.executeQuery()) {
-                        if (rs.next()) {
-                            res = true;
-                        }
-                    } catch (SQLException e) {
-                        LOGGER.error(e.getMessage(), e);
-                    }
-                    return res;
-                }
-        ).get();
-    }
 
     @Override
     public Users findById(Users users) {
@@ -311,12 +285,37 @@ public class DbStore implements Store<Users> {
     }
 
     /**
-     * получение списка всех стран из базы
+     * проверяет есть ли пользователь с таким логином и паролем
      *
+     * @param users
      * @return
      */
-    public List<String> findAllcountry() {
-        return this.db("select * from country", new ArrayList<>(), ps -> {
+    @Override
+    public boolean isCredentional(Users users) {
+        return this.db(
+                "select * from users where mail = ? and pass = ?", Arrays.asList(users.getMail(), users.getPassword()),
+                ps -> {
+                    Boolean res = false;
+                    try (ResultSet rs = ps.executeQuery()) {
+                        if (rs.next()) {
+                            res = true;
+                        }
+                    } catch (SQLException e) {
+                        LOGGER.error(e.getMessage(), e);
+                    }
+                    return res;
+                }
+        ).get();
+    }
+
+    /**
+     * рефактор получение листа объектов
+     * @param command
+     * @param list
+     * @return
+     */
+    private List<String> listRefactor(String command, List<Object> list) {
+        return this.db(command, list, ps -> {
             ArrayList<String> rsl = new ArrayList<>();
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
@@ -331,23 +330,32 @@ public class DbStore implements Store<Users> {
     }
 
     /**
+     * получение списка всех стран из базы
+     *
+     * @return
+     */
+    @Override
+    public List<String> findAllcountry() {
+        return this.listRefactor("select * from country", new ArrayList<>());
+    }
+
+    /**
      * получение списка всех городов в сооответствии со страной из базы
      *
      * @return
      */
+    @Override
     public List<String> findAllcity(Users country) {
         Integer id = this.isIndex("select * from country where country = ?", Arrays.asList(country.getCountry()));
-        return this.db("select * from city where country_id = ?", Arrays.asList(id), ps -> {
-            ArrayList<String> rsl = new ArrayList<>();
-            try (ResultSet rs = ps.executeQuery()) {
-                while (rs.next()) {
-                    rsl.add(rs.getString(2));
-                }
+        return this.listRefactor("select * from city where country_id = ?", Arrays.asList(id));
+    }
 
-            } catch (SQLException e) {
-                LOGGER.error(e.getMessage(), e);
-            }
-            return rsl;
-        }).get();
+    /**
+     * полчение списка всех возможных прав из базы
+     * @return
+     */
+    @Override
+    public List<String> findAllroles() {
+        return this.listRefactor("select * from roles", new ArrayList<>());
     }
 }

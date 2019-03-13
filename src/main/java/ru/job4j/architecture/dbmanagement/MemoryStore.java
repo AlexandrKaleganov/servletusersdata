@@ -112,6 +112,11 @@ public class MemoryStore implements Store<Users> {
         return null;
     }
 
+    @Override
+    public List<String> findAllroles() {
+        return null;
+    }
+
 
     @Override
     public boolean isCredentional(Users users) {

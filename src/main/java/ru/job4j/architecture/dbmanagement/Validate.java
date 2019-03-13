@@ -27,9 +27,13 @@ public interface Validate<E> {
 
     E findByMail(E users);
 
+    Boolean isCredentional(Users users);
+
     List<String> findAllcountry();
 
     List<String> findAllcity(E adres);
 
-    Boolean isCredentional(Users users);
+    List<String> findAllroles(String roles);
+
+
 }

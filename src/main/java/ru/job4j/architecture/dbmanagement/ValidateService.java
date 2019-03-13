@@ -143,4 +143,19 @@ public class ValidateService implements Validate<Users> {
     public ArrayList<String> findAllcity(Users country) {
         return (ArrayList<String>) this.logic.findAllcity(country);
     }
+
+    /**
+     * буду проверять если прилетел запрос не от админа то верну роли только юзера
+     *
+     * @param roles
+     * @return
+     */
+    @Override
+    public List<String> findAllroles(String roles) {
+        ArrayList<String> rsl = (ArrayList<String>) this.logic.findAllroles();
+        if (!roles.equals("ADMIN")) {
+            rsl.remove("ADMIN");
+        }
+        return rsl;
+    }
 }

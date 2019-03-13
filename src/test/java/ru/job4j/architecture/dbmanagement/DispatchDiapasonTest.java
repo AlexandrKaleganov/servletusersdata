@@ -79,4 +79,11 @@ public class DispatchDiapasonTest {
         });
     }
 
+    @Test
+    public void findallRoles() {
+        this.fulltest((disp, exp) -> {
+            Assert.assertThat(disp.access("findAllroles", exp, new ArrayList<String>()).get(0), is("ADMIN"));
+            Assert.assertThat(disp.access("findAllroles", exp, new ArrayList<String>()).get(1), is("USER"));
+        });
+    }
 }
