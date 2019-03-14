@@ -8,4 +8,5 @@
     <include file="scripts/update_001.sql" relativeToChangelogFile="true"/>
     <include file="scripts/update_002.sql" relativeToChangelogFile="true"/>
     <include file="scripts/update_003.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/update_004.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>
