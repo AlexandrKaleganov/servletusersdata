@@ -33,7 +33,7 @@
             $.ajax({
                 type: "POST",
                 url: "./stringlist",
-                data:{action: "findAllcountry"},
+                data: {action: "findAllcountry"},
                 success: function (data) {
                     console.log(data);
                     for (var i = 0; i < data.length; i++) {
@@ -46,7 +46,7 @@
             $.ajax({
                 type: "POST",
                 url: "./stringlist",
-                data:{action: "findAllroles"},
+                data: {action: "findAllroles"},
                 success: function (data) {
                     console.log(data);
                     for (var i = 0; i < data.length; i++) {
@@ -55,13 +55,14 @@
                 },
             });
         });
+
         function cityList() {
             console.log($("#country").val());
             $.ajax({
-                type:"POST",
-                url:"./stringlist",
-                data:{action:"findAllcity", country:$("#country").val()},
-                success:function (data) {
+                type: "POST",
+                url: "./stringlist",
+                data: {action: "findAllcity", country: $("#country").val()},
+                success: function (data) {
                     for (var i = 0; i < data.length; i++) {
                         $("#city option:last").after("<option value='" + data[i] + "'>" + data[i] + "</option>");
                     }
@@ -69,6 +70,7 @@
                 }
             })
         }
+
         function isValid(r, l) {
             var rsl = false;
             if (r.val() == l) {
@@ -80,7 +82,7 @@
 
         function valid() {
             return !(isValid($("#name"), "") + isValid($("#mail"), "") + isValid($("#password"), "")
-                + isValid($("#country"), "") + isValid($("#city"), "")+ isValid($("#roles"), ""));
+                + isValid($("#country"), "") + isValid($("#city"), "") + isValid($("#roles"), ""));
         };
     </script>
 </head>
@@ -121,20 +123,21 @@
             <input type="password" class="form-control" name="password" title="Enter pass." id="password">
         </div>
         <div class="form-group">
+            <label for="roles">Роли:</label>
+            <select class="form-control" name="roles" title="Enter attribut dostupa." id="roles">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
             <label for="country">Страна:</label>
-            <select class="form-control" title="Enter attribut dostupa." name="country" id="country" onclick="cityList()">
+            <select class="form-control" title="Enter country" name="country" id="country"
+                    onclick="cityList()">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
             <label for="city">Город:</label>
-            <select class="form-control" name="city" title="Enter attribut dostupa." id="city">
-                <option value=""></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="roles">Роли:</label>
-            <select class="form-control" name="roles" title="Enter attribut dostupa." id="roles">
+            <select class="form-control" name="city" title="Enter city" id="city">
                 <option value=""></option>
             </select>
         </div>

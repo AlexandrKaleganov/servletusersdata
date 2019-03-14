@@ -36,7 +36,7 @@ public class UserServletTest {
         when(this.req.getRequestDispatcher("/WEB-INF/views/index.jsp")).thenReturn(this.disp);
         when(this.req.getParameter("id")).thenReturn("0");
         when(this.req.getParameter("name")).thenReturn("Alex");
-        when(this.req.getParameter("mail")).thenReturn("alexmur07");
+        when(this.req.getParameter("mail")).thenReturn("alexmur07@mail.ru");
         when(this.req.getParameter("password")).thenReturn("pass12");
         when(this.req.getParameter("country")).thenReturn("Country");
         when(this.req.getParameter("city")).thenReturn("City");
@@ -87,7 +87,7 @@ public class UserServletTest {
         this.fulltestServlet((db, servlet) -> {
             this.testdoPOST(servlet, "add");
             assertThat(db.findByMail(
-                    new Users("roo", "name", "alexmur07", "alexmur07", "Russia", "Novosibirsk", "ADMIN")).getMail(), is("alexmur07"));
+                    new Users("roo", "name", "alexmur07@mail.ru", "alexmur07", "Russia", "Novosibirsk", "ADMIN")).getMail(), is("alexmur07@mail.ru"));
         });
     }
 
@@ -96,9 +96,9 @@ public class UserServletTest {
         this.fulltestServlet((db, servlet) -> {
             this.testdoPOST(servlet, "add");
             when(this.req.getParameter("id")).thenReturn(db.findAll().get(0).getId());
-            when(this.req.getParameter("mail")).thenReturn("test");
+            when(this.req.getParameter("mail")).thenReturn("test@mail.ru");
             this.testdoPOST(servlet, "update");
-            assertThat(db.findByMail(new Users("roo", "roo", "test", "test", "Russia", "Novosibirsk", "ADMIN")).getMail(), is("test"));
+            assertThat(db.findByMail(new Users("roo", "roo", "test@mail.ru", "test", "Russia", "Novosibirsk", "ADMIN")).getMail(), is("test@mail.ru"));
         });
     }
 
@@ -106,7 +106,7 @@ public class UserServletTest {
     public void testDeleteUser() {
         this.fulltestServlet((db, servlet) -> {
             when(this.req.getParameter("id")).thenReturn(db.findByMail(new Users("roo",
-                    "name", "root", "root", "Russia", "Novosibirsk", "ADMIN")).getId());
+                    "name", "root@mail.ru", "root", "Russia", "Novosibirsk", "ADMIN")).getId());
             this.testdoPOST(servlet, "delete");
             assertThat(db.findAll().size(), is(0));
         });

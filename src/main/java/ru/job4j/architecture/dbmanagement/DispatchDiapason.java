@@ -37,12 +37,9 @@ public class DispatchDiapason {
      */
     public DispatchDiapason init() {
         this.dispatch.put("add", (users) ->
-                Optional.of(this.validate.add(users))
-        );
-
+                Optional.of(this.validate.add(users)));
         this.dispatch.put("update", (users) ->
-                Optional.of(this.validate.update(users))
-        );
+                Optional.of(this.validate.update(users)));
         this.dispatch.put("delete", (users) ->
                 Optional.of(this.validate.delete(users)));
         this.dispatch.put("findall", (users) ->

@@ -31,9 +31,8 @@ public class ValidateService implements Validate<Users> {
      */
     @Override
     public Users add(Users users) throws DatabaseException {
-        this.isIdFORMAT(users);
-        this.isNameLoginFORMAT(users, 2);
-        this.validation(users, (u) -> !u.getPassword().matches("[a-zA-Z, 0-9]{4,20}"), "Error Password");
+        this.isNameLoginFORMAT(users);
+        this.validation(users, (u) -> !u.getPassword().matches("[a-zA-Z, 0-9]{4,20}"), "Пароль может содержать цифры и буквы латинского алфавита, и не может быть менее 4");
         this.validation(users, u -> !(this.logic.findByMail(u).getMail() == null), "Пользователь с таким логином уже существует");
         return this.logic.add(users);
     }
@@ -48,8 +47,7 @@ public class ValidateService implements Validate<Users> {
      */
     @Override
     public Users update(Users users) throws DatabaseException {
-        this.isIdFORMAT(users);
-        this.isNameLoginFORMAT(users, 0);
+        this.isNameLoginFORMAT(users);
         this.validation(users, u -> !(this.logic.findByMail(u).getMail() == null), "Пользователь с таким логином уже существует");
         return this.logic.update(users);
     }
@@ -125,9 +123,10 @@ public class ValidateService implements Validate<Users> {
      * @param users
      * @throws DatabaseException
      */
-    private void isNameLoginFORMAT(Users users, int start) throws DatabaseException {
-        this.validation(users, (u) -> !u.getName().matches("[a-zA-Z]{" + start + ",20}|[а-яА-Я]{" + start + ",20}"), "USERNAME");
-        this.validation(users, (u) -> !u.getMail().matches("[a-zA-Z, 0-9]{" + start + ",20}"), "LOGIN");
+    private void isNameLoginFORMAT(Users users) throws DatabaseException {
+        this.validation(users, (u) -> !u.getName().matches("[a-zA-Z]{3,20}|[а-яА-Я]{3,20}"), "Имя должно состоять либо из русскихх букв илибо из букв латинского алфавита и содержать не менее 3 символов");
+        this.validation(users, (u) -> !u.getMail().matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"), "MAIL введён не корректно");
     }
 
 

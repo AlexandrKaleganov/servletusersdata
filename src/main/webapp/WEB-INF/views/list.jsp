@@ -60,6 +60,7 @@
             <th>id</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Роль</th>
             <th>Страна</th>
             <th>Город</th>
             <th>Edit</th>
@@ -73,14 +74,16 @@
                 <td><c:out value="${u.id}"/></td>
                 <td><c:out value="${u.name}"/></td>
                 <td><c:out value="${u.mail}"/></td>
+                <td><c:out value="${u.roles}"/></td>
                 <td><c:out value="${u.country}"/></td>
                 <td><c:out value="${u.city}"/></td>
                 <td>
-                    <form action="${pageContext.servletContext.contextPath}/edit" method="post">
-                        <input type="hidden" name="id" value="${u.id}">
-                        <input type="hidden" name="action" value="findbyid">
-                        <input type="submit" value="EDIT">
-                    </form>
+                    <c:out value="${roles}"/>
+                    <%--<form action="${pageContext.servletContext.contextPath}/edit" method="post">--%>
+                        <%--<input type="hidden" name="id" value="${u.id}">--%>
+                        <%--<input type="hidden" name="action" value="findbyid">--%>
+                        <%--<input type="submit" value="EDIT">--%>
+                    <%--</form>--%>
                 </td>
                 <td>
                     <form action="${pageContext.servletContext.contextPath}/" method="post">

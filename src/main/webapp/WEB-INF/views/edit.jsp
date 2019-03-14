@@ -53,6 +53,19 @@
             })
             return true;
         }
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                url: "./stringlist",
+                data:{action: "findAllroles"},
+                success: function (data) {
+                    console.log(data);
+                    for (var i = 0; i < data.length; i++) {
+                        $("#roles option:last").after("<option>" + data[i] + "</option>");
+                    }
+                },
+            });
+        });
     </script>
 </head>
 <body>
@@ -92,14 +105,20 @@
                 <input type="password" class="form-control" name="password" value="${u.password}" title="Enter pass." id="password">
             </div>
             <div class="form-group">
+                <label for="roles">Роли:</label>
+                <select class="form-control" name="roles" title="Enter attribut dostupa." id="roles">
+                    <option value=""></option>
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="country">Страна:</label>
-                <select class="form-control" title="Enter attribut dostupa."  name="country" id="country" onclick="cityList()">
+                <select class="form-control" title="Enter country"  name="country" id="country" onclick="cityList()">
                     <option value="${u.country}">${u.country}</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="city">Город:</label>
-                <select class="form-control" name="city" title="Enter attribut dostupa." id="city">
+                <select class="form-control" name="city" title="Enter city" id="city">
                     <option value="${u.city}">${u.city}</option>
                 </select>
             </div>

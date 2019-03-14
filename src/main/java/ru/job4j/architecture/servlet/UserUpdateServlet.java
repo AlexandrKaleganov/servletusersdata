@@ -28,10 +28,10 @@ public class UserUpdateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=utf-8");
         req.setCharacterEncoding("utf-8");
+        Users temp = new Users();
+        temp.setId(req.getParameter("id"));
         try {
-            req.setAttribute("u", DispatchDiapason.getInstance().access(req.getParameter("action"),
-                    new Users(req.getParameter("id"), req.getParameter("name"), req.getParameter("mail"), req.getParameter("password"),
-                            req.getParameter("country"), req.getParameter("city"), req.getParameter("roles"))));
+            req.setAttribute("u", DispatchDiapason.getInstance().access(req.getParameter("action"), temp));
             req.getRequestDispatcher("/WEB-INF/views/edit.jsp").forward(req, resp);
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
