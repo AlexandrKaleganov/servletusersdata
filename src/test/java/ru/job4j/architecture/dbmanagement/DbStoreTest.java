@@ -84,7 +84,7 @@ public class DbStoreTest {
     @Test
     public void findaaalTest() {
         this.alltestfunc((bd, exp) -> {
-            assertThat(bd.findAll().get(0), Is.is(exp));
+            assertThat(bd.findAll().get(1), Is.is(exp));
         });
     }
 

@@ -37,6 +37,7 @@ public class AuthFilter implements Filter {
                 return;
             }
             req.setAttribute("roles", request.getSession().getAttribute("roles"));   //в фильтре всегда буду передавать роль в атрибут
+            req.setAttribute("login", request.getSession().getAttribute("login"));   //в фильтре всегда буду передавать роль в атрибут
             chain.doFilter(req, res);   //а вот если всё пучком и запрос не на страницу авторизации и сессия содержит логин то фильтр нас пропускает куда угодно
         }
     }

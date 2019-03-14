@@ -108,7 +108,7 @@ public class UserServletTest {
             when(this.req.getParameter("id")).thenReturn(db.findByMail(new Users("roo",
                     "name", "root@mail.ru", "root", "Russia", "Novosibirsk", "ADMIN")).getId());
             this.testdoPOST(servlet, "delete");
-            assertThat(db.findAll().size(), is(0));
+            assertThat(db.findAll().size(), is(1));
         });
     }
 }

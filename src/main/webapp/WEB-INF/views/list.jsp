@@ -78,19 +78,29 @@
                 <td><c:out value="${u.country}"/></td>
                 <td><c:out value="${u.city}"/></td>
                 <td>
-                    <c:out value="${roles}"/>
-                    <%--<form action="${pageContext.servletContext.contextPath}/edit" method="post">--%>
-                        <%--<input type="hidden" name="id" value="${u.id}">--%>
-                        <%--<input type="hidden" name="action" value="findbyid">--%>
-                        <%--<input type="submit" value="EDIT">--%>
-                    <%--</form>--%>
+                    <c:if test="${roles eq 'ADMIN'}">
+                    <form action="${pageContext.servletContext.contextPath}/edit" method="post">
+                        <input type="hidden" name="id" value="${u.id}">
+                        <input type="hidden" name="action" value="findbyid">
+                        <input type="submit" value="EDIT">
+                    </form>
+                </c:if>
+                    <c:if test="${!(roles eq 'ADMIN') && (u.mail eq login)}">
+                        <form action="${pageContext.servletContext.contextPath}/edit" method="post">
+                            <input type="hidden" name="id" value="${u.id}">
+                            <input type="hidden" name="action" value="findbyid">
+                            <input type="submit" value="EDIT">
+                        </form>
+                    </c:if>
                 </td>
                 <td>
+                    <c:if test="${roles eq 'ADMIN'}">
                     <form action="${pageContext.servletContext.contextPath}/" method="post">
                         <input type="hidden" name="action" value="delete">
                         <input type="hidden" name="id" value="${u.id}">
                         <input type="submit" value="DELETE">
                     </form>
+                    </c:if>
                 </td>
             </tr>
         </c:forEach>

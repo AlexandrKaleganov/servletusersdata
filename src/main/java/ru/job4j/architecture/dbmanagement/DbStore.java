@@ -210,11 +210,9 @@ public class DbStore implements Store<Users> {
                     ArrayList<Users> rsl = new ArrayList<>();
                     try (ResultSet rs = ps.executeQuery()) {
                         while (rs.next()) {
-                            if (!rs.getString("mail").equals("root")) {
                                 rsl.add(new Users(String.valueOf(rs.getInt("id")),
                                         rs.getString("name"), rs.getString("mail"), rs.getString("pass"),
                                         rs.getString("country"), rs.getString("city"), rs.getString("roles")));
-                            }
                         }
                     } catch (SQLException e) {
                         LOGGER.error(e.getMessage(), e);
