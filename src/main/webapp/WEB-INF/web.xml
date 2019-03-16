@@ -23,7 +23,18 @@
         <filter-name>AuthFilter</filter-name>
         <url-pattern>*</url-pattern>
     </filter-mapping>
-
+    <filter>
+        <filter-name>AddUserFilter</filter-name>
+        <filter-class>ru.job4j.architecture.AddUserFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>AddUserFilter</filter-name>
+        <url-pattern>/create</url-pattern>
+    </filter-mapping>
     <!--?????? ???????? ???????-->
 
     <servlet>

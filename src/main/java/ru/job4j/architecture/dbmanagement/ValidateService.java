@@ -48,7 +48,11 @@ public class ValidateService implements Validate<Users> {
     @Override
     public Users update(Users users) throws DatabaseException {
         this.isNameLoginFORMAT(users);
-        this.validation(users, u -> !(this.logic.findByMail(u).getMail() == null), "Пользователь с таким логином уже существует");
+        Users temp = this.logic.findByMail(users);
+//                                 !(this.logic.findByMail(u).getMail() == null)
+        if (temp.getMail() != null) {
+            this.validation(users, u -> !(temp.getId() == u.getId()), "Пользователь с таким логином уже существует");
+        }
         return this.logic.update(users);
     }
 

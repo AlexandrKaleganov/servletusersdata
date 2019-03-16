@@ -81,11 +81,30 @@ public class ValidateServiceTest {
     @Test
     public void update() throws Exception {
         this.fulltest((val, exp) -> {
+            Users temp = val.findById(exp);
+            temp.setName("roott");
+            temp.setMail("aaasl@mail.ru");
             Users expected = val.update(new Users(exp.getId(), "vass", "expected@mail.ru", "root", "root", "root", "ADMIN"));
             Assert.assertThat(val.findById(exp), Is.is(expected));
+            val.update(temp);
+            Assert.assertThat(val.findById(temp).getName(), Is.is("roott"));
+            Assert.assertThat(val.findById(temp).getMail(), Is.is("aaasl@mail.ru"));
         });
     }
 
+    /**
+     * если попробывать изменить майл у другого пользователя на майл который уже есть в базе
+     * то упадёт исключение
+     * @throws Exception
+     */
+    @Test(expected = DatabaseException.class)
+    public void updatemailThrows() throws Exception {
+        this.fulltest((val, exp) -> {
+            Users temp = val.findById(exp);
+            temp.setId("100500");
+            val.update(temp);
+        });
+    }
     //тест метода findAll если в бд есть данные
     //то мы получим наши данные, в противном случае мы получим пустой список
     @Test
