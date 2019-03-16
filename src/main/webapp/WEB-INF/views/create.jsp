@@ -39,7 +39,7 @@
                     for (var i = 0; i < data.length; i++) {
                         $("#country option:last").after("<option>" + data[i] + "</option>");
                     }
-                },
+                }
             });
         });
         $(document).ready(function () {
@@ -52,7 +52,7 @@
                     for (var i = 0; i < data.length; i++) {
                         $("#roles option:last").after("<option>" + data[i] + "</option>");
                     }
-                },
+                }
             });
         });
 
@@ -69,7 +69,7 @@
 
                 }
             })
-        }
+        };
 
         function isValid(r, l) {
             var rsl = false;

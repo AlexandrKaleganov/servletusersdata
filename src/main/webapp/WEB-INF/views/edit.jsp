@@ -52,7 +52,7 @@
                 }
             })
             return true;
-        }
+        };
         $(document).ready(function () {
             $.ajax({
                 type: "POST",
@@ -63,7 +63,7 @@
                     for (var i = 0; i < data.length; i++) {
                         $("#roles option:last").after("<option>" + data[i] + "</option>");
                     }
-                },
+                }
             });
         });
     </script>
@@ -90,7 +90,7 @@
         <form class="form-inline"  action="${pageContext.servletContext.contextPath}/" method="post">
             <div class="form-group">
                 <label for="id"></label>
-                <input type="hidden" class="form-control" neme="id" value="${u.id}" title="Error ID. Enter ID." id="id">
+                <input type="hidden" class="form-control" neme="id" value="${u.id}" id="id">
             </div>
             <div class="form-group">
                 <label for="name">Имя:</label>
@@ -107,7 +107,7 @@
             <div class="form-group">
                 <label for="roles">Роли:</label>
                 <select class="form-control" name="roles" title="Enter attribut dostupa." id="roles">
-                    <option value=""></option>
+                    <option value="${u.roles}">${u.roles}</option>
                 </select>
             </div>
             <div class="form-group">
