@@ -28,23 +28,24 @@
             $.ajax({
                 type: "POST",
                 url: "./stringlist",
-                data:{action: "findAllcountry"},
+                data: {action: "findAllcountry"},
                 success: function (data) {
                     console.log(data);
-                    for (var i = 0; i < data.length; i++) {
-                        $("#country option:last").after("<option>" + data[i] + "</option>");
-                    }
-                },
+                        for (var i = 0; i < data.length; i++) {
+                            $("#country option:last").after("<option>" + data[i] + "</option>");
+                        }
+                }
             });
             cityList();
         });
+
         function cityList() {
             console.log($("#country").val());
             $.ajax({
-                type:"POST",
-                url:"./stringlist",
-                data:{action:"findAllcity", country:$("#country").val()},
-                success:function (data) {
+                type: "POST",
+                url: "./stringlist",
+                data: {action: "findAllcity", country: $("#country").val()},
+                success: function (data) {
                     for (var i = 0; i < data.length; i++) {
                         $("#city option:last").after("<option value='" + data[i] + "'>" + data[i] + "</option>");
                     }
@@ -57,7 +58,7 @@
             $.ajax({
                 type: "POST",
                 url: "./stringlist",
-                data:{action: "findAllroles"},
+                data: {action: "findAllroles"},
                 success: function (data) {
                     console.log(data);
                     for (var i = 0; i < data.length; i++) {
@@ -86,45 +87,46 @@
         </ul>
     </div>
 </nav>
-    <div>
-        <form class="form-inline"  action="${pageContext.servletContext.contextPath}/" method="post">
-            <div class="form-group">
-                <label for="id"></label>
-                <input type="hidden" class="form-control" neme="id" value="${u.id}" id="id">
-            </div>
-            <div class="form-group">
-                <label for="name">Имя:</label>
-                <input type="text" class="form-control" name="name" value="${u.name}" title="Enter name." id="name">
-            </div>
-            <div class="form-group">
-                <label for="mail">Маил:</label>
-                <input type="text" class="form-control" name="mail" value="${u.mail}" title="Enter login." id="mail">
-            </div>
-            <div class="form-group">
-                <label for="password">Проль:</label>
-                <input type="password" class="form-control" name="password" value="${u.password}" title="Enter pass." id="password">
-            </div>
-            <div class="form-group">
-                <label for="roles">Роли:</label>
-                <select class="form-control" name="roles" title="Enter attribut dostupa." id="roles">
-                    <option value="${u.roles}">${u.roles}</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="country">Страна:</label>
-                <select class="form-control" title="Enter country"  name="country" id="country" onclick="cityList()">
-                    <option value="${u.country}">${u.country}</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="city">Город:</label>
-                <select class="form-control" name="city" title="Enter city" id="city">
-                    <option value="${u.city}">${u.city}</option>
-                </select>
-            </div>
-            <button type="submit" name="action" value="update" class="btn btn-default" onclick="return valid();">Submit
-            </button>
-        </form>
-    </div>
+<div>
+    <form class="form-inline" action="${pageContext.servletContext.contextPath}/" method="post">
+        <div class="form-group">
+            <label for="id"></label>
+            <input type="hidden" class="form-control" name="id" value="${u.id}" title="Enter ID." id="id">
+        </div>
+        <div class="form-group">
+            <label for="name">Имя:</label>
+            <input type="text" class="form-control" name="name" value="${u.name}" title="Enter name." id="name">
+        </div>
+        <div class="form-group">
+            <label for="mail">Маил:</label>
+            <input type="text" class="form-control" name="mail" value="${u.mail}" title="Enter login." id="mail">
+        </div>
+        <div class="form-group">
+            <label for="password">Проль:</label>
+            <input type="text" class="form-control" name="password" value="${u.password}" title="Enter pass."
+                   id="password">
+        </div>
+        <div class="form-group">
+            <label for="roles">Роли:</label>
+            <select class="form-control" name="roles" title="Enter attribut dostupa." id="roles">
+                <option value="${u.roles}">${u.roles}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="country">Страна:</label>
+            <select class="form-control" title="Enter country" name="country" id="country" onclick="cityList()">
+                <option value="${u.country}">${u.country}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="city">Город:</label>
+            <select class="form-control" name="city" title="Enter city" id="city">
+                <option value="${u.city}">${u.city}</option>
+            </select>
+        </div>
+        <button type="submit" name="action" value="update" class="btn btn-default" onclick="return valid();">Submit
+        </button>
+    </form>
+</div>
 </body>
 </html>

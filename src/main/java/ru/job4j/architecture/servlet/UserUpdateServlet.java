@@ -1,7 +1,9 @@
 package ru.job4j.architecture.servlet;
 
 /**
- * сервлет делает редерект на JSP  /WEB-INF/views/edit.jsp
+ * сервлет делает получает пользователя по id  и делает
+ * редерект на JSP  /WEB-INF/views/edit.jsp для того чтобы
+ * видеть данне которые хочешь редактировать
  */
 
 import org.apache.log4j.Logger;
@@ -21,7 +23,7 @@ public class UserUpdateServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/views/edit.jsp").forward(req, resp);
+//        req.getRequestDispatcher("/WEB-INF/views/edit.jsp").forward(req, resp);
     }
 
     @Override

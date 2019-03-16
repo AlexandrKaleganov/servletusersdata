@@ -9,7 +9,6 @@ import ru.job4j.architecture.dbmanagement.DbinitAdres;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import java.sql.*;
 
 public class InitContextListener implements ServletContextListener {
     private static final Logger LOGGER = Logger.getLogger(DbinitAdres.class);
@@ -27,16 +26,5 @@ public class InitContextListener implements ServletContextListener {
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        try {
-            Class.forName(sce.getServletContext().getInitParameter("driver"));
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        DbinitAdres adres = new DbinitAdres();
-        try {
-            adres.deleteAllInfo();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 }

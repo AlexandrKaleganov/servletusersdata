@@ -2,6 +2,9 @@ package ru.job4j.architecture.model;
 
 import java.util.Objects;
 
+/**
+ * моель пользователя
+ */
 public class Users {
     private String id;
     private String name;

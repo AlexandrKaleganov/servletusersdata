@@ -3,6 +3,9 @@ package ru.job4j.architecture.model;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+/**
+ * модель ошибки ошибки будут передаваться в jsp с помощью этой модели
+ */
 public class Err {
 
     String error;

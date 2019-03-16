@@ -1,4 +1,4 @@
-package ru.job4j.architecture;
+package ru.job4j.architecture.filtres;
 
 import org.apache.log4j.Logger;
 

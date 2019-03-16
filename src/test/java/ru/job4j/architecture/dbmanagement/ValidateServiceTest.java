@@ -83,15 +83,21 @@ public class ValidateServiceTest {
         this.fulltest((val, exp) -> {
             Users temp = val.findById(exp);
             temp.setName("roott");
-            temp.setMail("aaasl@mail.ru");
             Users expected = val.update(new Users(exp.getId(), "vass", "expected@mail.ru", "root", "root", "root", "ADMIN"));
             Assert.assertThat(val.findById(exp), Is.is(expected));
             val.update(temp);
             Assert.assertThat(val.findById(temp).getName(), Is.is("roott"));
-            Assert.assertThat(val.findById(temp).getMail(), Is.is("aaasl@mail.ru"));
+            Assert.assertThat(val.findById(temp).getMail(), Is.is("alexmur07@mail.ru"));
+
         });
     }
-
+    @Test
+    public void updateTwo() throws Exception {
+        this.fulltest((val, exp) -> {
+            exp.setPassword("qwe123");
+            Assert.assertThat(val.update(exp).getMail(), Is.is("alexmur07@mail.ru"));
+        });
+    }
     /**
      * если попробывать изменить майл у другого пользователя на майл который уже есть в базе
      * то упадёт исключение

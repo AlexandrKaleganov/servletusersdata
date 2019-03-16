@@ -108,7 +108,7 @@
     <form class="form-inline" action="${pageContext.servletContext.contextPath}/" method="post">
         <div class="form-group">
             <label for="id"></label>
-            <input type="hidden" class="form-control" neme="id" value="37" title="Error ID. Enter ID." id="id">
+            <input type="hidden" class="form-control" name="id"  value="37" title="Enter ID." id="id">
         </div>
         <div class="form-group">
             <label for="name">Имя:</label>

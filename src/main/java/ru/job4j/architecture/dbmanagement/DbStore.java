@@ -271,7 +271,7 @@ public class DbStore implements Store<Users> {
                     try (ResultSet rs = ps.executeQuery()) {
                         if (rs.next()) {
                             res = new Users(String.valueOf(rs.getInt("id")),
-                                    rs.getString("name"), rs.getString("mail"), "",
+                                    rs.getString("name"), rs.getString("mail"), rs.getString("pass"),
                                     rs.getString("country"), rs.getString("city"), rs.getString("roles"));
                         }
                     } catch (SQLException e) {

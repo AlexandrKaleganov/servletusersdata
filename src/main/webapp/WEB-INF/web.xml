@@ -13,7 +13,7 @@
     </context-param>
     <filter>
         <filter-name>AuthFilter</filter-name>
-        <filter-class>ru.job4j.architecture.AuthFilter</filter-class>
+        <filter-class>ru.job4j.architecture.filtres.AuthFilter</filter-class>
         <init-param>
             <param-name>encoding</param-name>
             <param-value>UTF-8</param-value>
@@ -25,7 +25,7 @@
     </filter-mapping>
     <filter>
         <filter-name>AddUserFilter</filter-name>
-        <filter-class>ru.job4j.architecture.AddUserFilter</filter-class>
+        <filter-class>ru.job4j.architecture.filtres.AddUserFilter</filter-class>
         <init-param>
             <param-name>encoding</param-name>
             <param-value>UTF-8</param-value>
@@ -35,7 +35,6 @@
         <filter-name>AddUserFilter</filter-name>
         <url-pattern>/create</url-pattern>
     </filter-mapping>
-    <!--?????? ???????? ???????-->
 
     <servlet>
         <servlet-name>AdresListServlet</servlet-name>
@@ -45,7 +44,6 @@
         <servlet-name>AdresListServlet</servlet-name>
         <url-pattern>/stringlist</url-pattern>
     </servlet-mapping>
-        <!--????? ??????? ??????? ? ???? ?????????-->
     <servlet>
         <servlet-name>UserServlet</servlet-name>
         <servlet-class>ru.job4j.architecture.servlet.UserServlet</servlet-class>
@@ -85,7 +83,6 @@
         <servlet-name>UserCreateServlet</servlet-name>
         <url-pattern>/create</url-pattern>
     </servlet-mapping>
-
     <servlet>
         <servlet-name>UserListServlet</servlet-name>
         <servlet-class>ru.job4j.architecture.servlet.UserListServlet</servlet-class>
