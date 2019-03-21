@@ -5,6 +5,8 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import org.hamcrest.core.Is;
 import org.junit.Assert;
 import org.junit.Test;
+import ru.job4j.architecture.ConnectionRollback;
+import ru.job4j.architecture.Poolrollback;
 import ru.job4j.architecture.err.BiConEx;
 import ru.job4j.architecture.model.Users;
 
@@ -34,21 +36,20 @@ public class DbStoreTest {
      *
      * @param fank
      */
-    private void alltestfunc(BiConEx<DbStore, Users> fank) {
+    private void alltestfunc(BiConEx<DbStore, Users> fank) throws SQLException {
         Users users = new Users("12", "sacha", "alexmur07", "password", "Russia", "Novosibirsk", "ADMIN");
+
         DbStore dbStore = new DbStore(this.init());
-        Users expected = dbStore.add(users);
         try {
+            Users expected = dbStore.add(users);
             fank.accept(dbStore, expected);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            dbStore.deleteALL();
         }
     }
 
-    private BasicDataSource init() {
-        BasicDataSource source = new BasicDataSource();
+    private BasicDataSource init() throws SQLException {
+        BasicDataSource source = new Poolrollback();
         try {
             Properties settings = new Properties();
             try (InputStream in = DbStore.class.getClassLoader().getResourceAsStream("gradle.properties")) {
@@ -70,7 +71,7 @@ public class DbStoreTest {
      * тестируем метод добавления в бд
      */
     @Test
-    public void addDD() {
+    public void addDD() throws SQLException {
         this.alltestfunc((bd, exp) -> {
             Assert.assertThat(bd.findById(exp), Is.is(exp));
         });
@@ -82,7 +83,7 @@ public class DbStoreTest {
      * @throws SQLException
      */
     @Test
-    public void findaaalTest() {
+    public void findaaalTest() throws SQLException {
         this.alltestfunc((bd, exp) -> {
             assertThat(bd.findAll().get(1), Is.is(exp));
         });
@@ -92,7 +93,7 @@ public class DbStoreTest {
      * тестируем метод изменения пользователей
      */
     @Test
-    public void updateTest() {
+    public void updateTest() throws SQLException {
         this.alltestfunc((bd, exp) -> {
             bd.update(new Users(exp.getId(), "lex", "lex07", "psw", "Russia", "Novosibirsk", "ADMIN"));
             assertThat(bd.findById(exp).getName(), Is.is("lex"));
@@ -103,7 +104,7 @@ public class DbStoreTest {
      * тестируем удаление пользователя из бд
      */
     @Test
-    public void deleteTest() {
+    public void deleteTest() throws SQLException {
         this.alltestfunc((db, exp) -> {
             db.delete(exp).getId();
             assertThat(db.findById(exp).getId(), Is.is(new Users().getId()));
@@ -111,14 +112,14 @@ public class DbStoreTest {
     }
 
     @Test
-    public void findByLogin() {
+    public void findByLogin() throws SQLException {
         this.alltestfunc((db, exp) -> {
             assertThat(db.findByMail(exp).getMail(), Is.is(exp.getMail()));
         });
     }
 
     @Test
-    public void isCredentional() {
+    public void isCredentional() throws SQLException {
         this.alltestfunc((db, exp) -> {
             assertThat(db.isCredentional(new Users("12", "sacha", "alexmur07", "password", "Russia", "Novosibirsk", "ADMIN")), Is.is(true));
             assertThat(db.isCredentional(new Users("12", "sacha", "alexmu07", "password", "Russia", "Novosibirsk", "ADMIN")), Is.is(false));
@@ -145,19 +146,19 @@ public class DbStoreTest {
     }
 
     @Test
-    public void findAllcountry() {
+    public void findAllcountry() throws SQLException {
         this.alltestfunc((db, user) ->
                 assertThat(db.findAllcountry().get(1), Is.is("Russia")));
     }
 
     @Test
-    public void findAllcity() {
+    public void findAllcity() throws SQLException {
         this.alltestfunc((db, user) ->
                 assertThat(db.findAllcity(user).get(0), Is.is("Novosibirsk")));
     }
 
     @Test
-    public void findAllroles() {
+    public void findAllroles() throws SQLException {
         this.alltestfunc((db, us) -> {
             assertThat(db.findAllroles().get(0), Is.is("ADMIN"));
             assertThat(db.findAllroles().get(1), Is.is("USER"));
