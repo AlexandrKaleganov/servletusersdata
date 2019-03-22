@@ -159,7 +159,6 @@ public class DbStore implements Store<Users> {
     public Users add(Users user) {
         Integer roles = isIndex("select * from roles where roles = ?", Arrays.asList(user.getRoles().toString()));
         Integer country = isIndex("select * from country where country = ?", Arrays.asList(user.getCountry()));
-        System.out.println(user.getCity());
         Integer city = isIndex("select * from city where city = ?", Arrays.asList(user.getCity()));
         country = isnotNullId("insert into country(country) values(?)", Arrays.asList(user.getCountry()), country);
         System.out.println(country + " " + city);
