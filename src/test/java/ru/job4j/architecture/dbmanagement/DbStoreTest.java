@@ -45,11 +45,13 @@ public class DbStoreTest {
             fank.accept(dbStore, expected);
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            dbStore.deleteALL();
         }
     }
 
     private BasicDataSource init() throws SQLException {
-        BasicDataSource source = new Poolrollback();
+        BasicDataSource source = new BasicDataSource();
         try {
             Properties settings = new Properties();
             try (InputStream in = DbStore.class.getClassLoader().getResourceAsStream("gradle.properties")) {

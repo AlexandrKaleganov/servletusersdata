@@ -159,8 +159,10 @@ public class DbStore implements Store<Users> {
     public Users add(Users user) {
         Integer roles = isIndex("select * from roles where roles = ?", Arrays.asList(user.getRoles().toString()));
         Integer country = isIndex("select * from country where country = ?", Arrays.asList(user.getCountry()));
+        System.out.println(user.getCity());
         Integer city = isIndex("select * from city where city = ?", Arrays.asList(user.getCity()));
         country = isnotNullId("insert into country(country) values(?)", Arrays.asList(user.getCountry()), country);
+        System.out.println(country + " " + city);
         city = isnotNullId("insert into city(city, country_id) values(?, ?)", Arrays.asList(user.getCity(), country), city);
         this.db(
                 "insert into users (name, mail, pass) values (?, ?, ?)",
@@ -349,8 +351,15 @@ public class DbStore implements Store<Users> {
         return this.listRefactor("select * from city where country_id = ?", Arrays.asList(id));
     }
 
+    /**
+     * метод используется только для тестов
+     */
     public void dbRollback() {
-
+        try (Connection conn = source.getConnection();) {
+            conn.rollback();
+        } catch (SQLException e) {
+            LOGGER.error(e.getMessage(), e);
+        }
     }
 
     /**

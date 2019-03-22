@@ -15,12 +15,12 @@ public class ConnectionRollback {
                 new Class[]{Connection.class},
                 (proxy, method, args) -> {
                     Object rsl = null;
-                    if ("close".equals(method.getName())) {
-                        connection.rollback();
-                        connection.close();
-                    } else {
-                        rsl = method.invoke(connection, args);
-                    }
+//                    if ("close".equals(method.getName())) {
+//                        connection.rollback();
+//                        connection.close();
+//                    } else {
+//                        rsl = method.invoke(connection, args);
+//                    }
                     return rsl;
                 }
         );
