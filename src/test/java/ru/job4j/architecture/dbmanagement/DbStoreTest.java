@@ -58,8 +58,8 @@ public class DbStoreTest {
             source.setDriverClassName(settings.getProperty("db.driver"));
             source.setUrl(settings.getProperty("db.host"));
             source.setUsername(settings.getProperty("db.login"));
-            source.setMinIdle(5);
-            source.setMaxIdle(10);
+            source.setMinIdle(10);
+            source.setMaxIdle(20);
             source.setMaxOpenPreparedStatements(100);
         } catch (Exception e) {
             e.printStackTrace();

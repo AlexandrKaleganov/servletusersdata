@@ -210,9 +210,9 @@ public class DbStore implements Store<Users> {
                     ArrayList<Users> rsl = new ArrayList<>();
                     try (ResultSet rs = ps.executeQuery()) {
                         while (rs.next()) {
-                                rsl.add(new Users(String.valueOf(rs.getInt("id")),
-                                        rs.getString("name"), rs.getString("mail"), rs.getString("pass"),
-                                        rs.getString("country"), rs.getString("city"), rs.getString("roles")));
+                            rsl.add(new Users(String.valueOf(rs.getInt("id")),
+                                    rs.getString("name"), rs.getString("mail"), rs.getString("pass"),
+                                    rs.getString("country"), rs.getString("city"), rs.getString("roles")));
                         }
                     } catch (SQLException e) {
                         LOGGER.error(e.getMessage(), e);
@@ -308,6 +308,7 @@ public class DbStore implements Store<Users> {
 
     /**
      * рефактор получение листа объектов
+     *
      * @param command
      * @param list
      * @return
@@ -348,8 +349,13 @@ public class DbStore implements Store<Users> {
         return this.listRefactor("select * from city where country_id = ?", Arrays.asList(id));
     }
 
+    public void dbRollback() {
+
+    }
+
     /**
      * полчение списка всех возможных прав из базы
+     *
      * @return
      */
     @Override
