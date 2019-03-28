@@ -161,7 +161,6 @@ public class DbStore implements Store<Users> {
         Integer country = isIndex("select * from country where country = ?", Arrays.asList(user.getCountry()));
         Integer city = isIndex("select * from city where city = ?", Arrays.asList(user.getCity()));
         country = isnotNullId("insert into country(country) values(?)", Arrays.asList(user.getCountry()), country);
-        System.out.println(country + " " + city);
         city = isnotNullId("insert into city(city, country_id) values(?, ?)", Arrays.asList(user.getCity(), country), city);
         this.db(
                 "insert into users (name, mail, pass) values (?, ?, ?)",

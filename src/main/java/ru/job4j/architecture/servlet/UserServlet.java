@@ -43,8 +43,6 @@ public class UserServlet extends HttpServlet {
         Users users = new Users(req.getParameter("id"), req.getParameter("name"),
                 req.getParameter("mail"), req.getParameter("password"),
                 req.getParameter("country"), req.getParameter("city"), req.getParameter("roles"));
-        System.out.println(req.getRequestURI());
-
         try {
             req.setAttribute("message", this.dispatsh.access(req.getParameter("action"),
                     users));
