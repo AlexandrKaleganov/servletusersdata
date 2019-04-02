@@ -9,4 +9,5 @@ create or replace view  summary as (
 select id, name, maxcount, price, (maxcount * price), date as summ from service
 );
 
+
 --insert into service(name, maxcount, price) values ('картридж', 90, 375.50);
