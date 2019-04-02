@@ -5,7 +5,7 @@ package ru.job4j.architecture.listener;
  */
 
 import org.apache.log4j.Logger;
-import ru.job4j.architecture.dbmanagement.DbinitAdres;
+import ru.job4j.architecture.dbmanagementuser.DbinitAdres;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

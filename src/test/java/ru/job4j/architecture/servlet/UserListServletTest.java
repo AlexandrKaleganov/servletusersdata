@@ -1,7 +1,7 @@
 package ru.job4j.architecture.servlet;
 
 import org.junit.Before;
-import ru.job4j.architecture.dbmanagement.DbStore;
+import ru.job4j.architecture.dbmanagementuser.DbStore;
 import ru.job4j.architecture.model.Users;
 
 import javax.servlet.RequestDispatcher;

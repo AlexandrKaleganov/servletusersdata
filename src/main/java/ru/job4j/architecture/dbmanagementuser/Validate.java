@@ -1,4 +1,4 @@
-package ru.job4j.architecture.dbmanagement;
+package ru.job4j.architecture.dbmanagementuser;
 
 /**
  * интерфейс класса, который будет выполнять проверку возможно ли данное деиствие и возвращять

@@ -1,4 +1,4 @@
-package ru.job4j.architecture.dbmanagement;
+package ru.job4j.architecture.dbmanagementuser;
 /**
  * в этом пакете содержаться классы и интерефейсы для управления базами данных
  * DbinitAdres -  класс для инициализации базы даных адресов

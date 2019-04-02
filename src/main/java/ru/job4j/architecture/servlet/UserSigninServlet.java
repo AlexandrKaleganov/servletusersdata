@@ -1,7 +1,7 @@
 package ru.job4j.architecture.servlet;
 
 
-import ru.job4j.architecture.dbmanagement.DispatchDiapason;
+import ru.job4j.architecture.dbmanagementuser.DispatchDiapason;
 import ru.job4j.architecture.model.Err;
 import ru.job4j.architecture.model.Users;
 

@@ -1,4 +1,4 @@
-package ru.job4j.architecture.dbmanagement;
+package ru.job4j.architecture.dbmanagementuser;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;

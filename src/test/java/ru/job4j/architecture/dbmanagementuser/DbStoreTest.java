@@ -1,12 +1,10 @@
-package ru.job4j.architecture.dbmanagement;
+package ru.job4j.architecture.dbmanagementuser;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.hamcrest.core.Is;
 import org.junit.Assert;
 import org.junit.Test;
-import ru.job4j.architecture.ConnectionRollback;
-import ru.job4j.architecture.Poolrollback;
 import ru.job4j.architecture.err.BiConEx;
 import ru.job4j.architecture.model.Users;
 

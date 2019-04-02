@@ -1,4 +1,4 @@
-package ru.job4j.architecture.dbmanagement;
+package ru.job4j.architecture.dbmanagementuser;
 
 
 import ru.job4j.architecture.err.FunEx;

@@ -1,4 +1,4 @@
-package ru.job4j.architecture.dbmanagement;
+package ru.job4j.architecture.dbmanagementuser;
 
 
 import org.apache.commons.dbcp2.BasicDataSource;

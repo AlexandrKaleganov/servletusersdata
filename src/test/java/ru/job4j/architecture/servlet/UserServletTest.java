@@ -5,7 +5,7 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
-import ru.job4j.architecture.dbmanagement.DbStore;
+import ru.job4j.architecture.dbmanagementuser.DbStore;
 import ru.job4j.architecture.model.Users;
 
 import static org.hamcrest.core.Is.is;
