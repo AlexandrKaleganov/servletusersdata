@@ -1,4 +1,4 @@
-package ru.job4j.architecture.servlet;
+package ru.job4j.architecture.servletuser;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;

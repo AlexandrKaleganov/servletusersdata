@@ -162,7 +162,7 @@
     </dependencies>
     <profiles>
         <profile>
-            <id>travis</id>
+            <id>users</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>

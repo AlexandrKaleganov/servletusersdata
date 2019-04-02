@@ -9,7 +9,6 @@ services:
 - postgresql
 before_install:
 - psql -c 'create database usersdata;' -U postgres
-
 # после выполнения сборки запустить скрипт, который будет собирать статистику по JaCoCo
 # Здесь используется сторонни сервис https://codecov.io/
 env:

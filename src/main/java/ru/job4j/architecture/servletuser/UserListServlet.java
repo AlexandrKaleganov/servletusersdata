@@ -1,4 +1,4 @@
-package ru.job4j.architecture.servlet;
+package ru.job4j.architecture.servletuser;
 
 import org.apache.log4j.Logger;
 import ru.job4j.architecture.dbmanagementuser.DispatchDiapason;
