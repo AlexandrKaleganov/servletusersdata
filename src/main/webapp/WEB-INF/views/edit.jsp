@@ -1,4 +1,4 @@
-<%@ page import="ru.job4j.architecture.model.Users" %>
+<%@ page import="ru.job4j.architecture.modeluser.Users" %>
 <%@ page import="java.util.Optional" %><%--
   Created by IntelliJ IDEA.
   User: Kaleganov Alxandr

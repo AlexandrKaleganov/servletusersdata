@@ -1,4 +1,4 @@
-<%@ page import="ru.job4j.architecture.model.Err" %>
+<%@ page import="ru.job4j.architecture.modeluser.Err" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Lis

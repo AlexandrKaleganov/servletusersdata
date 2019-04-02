@@ -7,7 +7,7 @@ package ru.job4j.architecture.dbmanagementuser;
  * иначе вылетает ошибка и она обрабатываестся
  */
 
-import ru.job4j.architecture.model.Users;
+import ru.job4j.architecture.modeluser.Users;
 
 import java.util.List;
 

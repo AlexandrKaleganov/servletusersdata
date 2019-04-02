@@ -1,10 +1,9 @@
-package ru.job4j.architecture.model;
+package ru.job4j.architecture.modeluser;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hamcrest.core.Is;
 import org.junit.Assert;
 import org.junit.Test;
-import ru.job4j.architecture.model.Users;
 
 import java.io.IOException;
 

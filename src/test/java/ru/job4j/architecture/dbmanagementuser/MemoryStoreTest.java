@@ -3,7 +3,7 @@ package ru.job4j.architecture.dbmanagementuser;
 import org.hamcrest.core.Is;
 import org.junit.Assert;
 import org.junit.Test;
-import ru.job4j.architecture.model.Users;
+import ru.job4j.architecture.modeluser.Users;
 
 
 import java.util.function.BiConsumer;

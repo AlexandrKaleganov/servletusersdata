@@ -8,8 +8,8 @@ package ru.job4j.architecture.servlet;
 
 import org.apache.log4j.Logger;
 import ru.job4j.architecture.dbmanagementuser.DispatchDiapason;
-import ru.job4j.architecture.model.Err;
-import ru.job4j.architecture.model.Users;
+import ru.job4j.architecture.modeluser.Err;
+import ru.job4j.architecture.modeluser.Users;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

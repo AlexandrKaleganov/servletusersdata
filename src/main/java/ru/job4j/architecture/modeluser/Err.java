@@ -1,4 +1,4 @@
-package ru.job4j.architecture.model;
+package ru.job4j.architecture.modeluser;
 
 import java.time.LocalDateTime;
 import java.util.Objects;

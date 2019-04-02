@@ -1,4 +1,4 @@
-package ru.job4j.architecture.model;
+package ru.job4j.architecture.modeluser;
 
 import java.util.Objects;
 

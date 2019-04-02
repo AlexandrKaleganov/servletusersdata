@@ -6,7 +6,7 @@ import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import ru.job4j.architecture.dbmanagementuser.DbStore;
-import ru.job4j.architecture.model.Users;
+import ru.job4j.architecture.modeluser.Users;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;

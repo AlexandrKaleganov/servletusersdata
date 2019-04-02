@@ -1,4 +1,4 @@
-package ru.job4j.architecture.model;
+package ru.job4j.architecture.modeluser;
 
 /**
  * роли пользователя если есть жалание добавить роли, то необходимо сделать скрипт обновления БД

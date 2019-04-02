@@ -1,6 +1,6 @@
 package ru.job4j.architecture.filtres;
 
-import ru.job4j.architecture.model.Err;
+import ru.job4j.architecture.modeluser.Err;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;

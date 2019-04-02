@@ -1,5 +1,5 @@
 <%@ page import="java.util.Map" %>
-<%@ page import="ru.job4j.architecture.model.Users" %>
+<%@ page import="ru.job4j.architecture.modeluser.Users" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Kaleganov Alxandr

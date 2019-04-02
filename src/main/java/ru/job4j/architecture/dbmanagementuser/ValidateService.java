@@ -1,6 +1,6 @@
 package ru.job4j.architecture.dbmanagementuser;
 
-import ru.job4j.architecture.model.Users;
+import ru.job4j.architecture.modeluser.Users;
 
 import java.util.ArrayList;
 import java.util.List;

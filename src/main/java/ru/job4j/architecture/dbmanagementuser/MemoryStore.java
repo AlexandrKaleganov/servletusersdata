@@ -2,7 +2,7 @@ package ru.job4j.architecture.dbmanagementuser;
 
 
 import ru.job4j.architecture.err.FunEx;
-import ru.job4j.architecture.model.Users;
+import ru.job4j.architecture.modeluser.Users;
 
 import java.util.List;
 import java.util.Optional;
