@@ -40,7 +40,6 @@ public class UserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         resp.setContentType("text/html;charset=UTF-8");
         req.setCharacterEncoding("UTF-8");
-        System.out.println(req.getParameter("roles"));
         Users users = new Users(req.getParameter("id"), req.getParameter("name"),
                 req.getParameter("mail"), req.getParameter("password"),
                 req.getParameter("country"), req.getParameter("city"), req.getParameter("roles"));
