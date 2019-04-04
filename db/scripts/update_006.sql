@@ -15,7 +15,8 @@ select id, name, maxcount, price, (maxcount * price) as summ , date from service
 );
 -- тут будут ханится счета, которые нам будут отправлять на утверждение после заправки картриджей(после оказанных услу)
 --если всё верно и нас устраивает  мы будем жать утвердить и данные будут применены в другую таблицу а эта таблица будет очищаться
---команда очистки: delete from service_temp where numberschet = 123;  удалять буду по счёту в случае применения
+--команда очистки:
+-- delete from service_temp where numberschet = 123;  удалять буду по счёту в случае применения
 --insert into service_temp (numberschet, id_service, maxcount) values(123, 1, 8);
 create table if not exists  service_temp(
 numberschet integer,
