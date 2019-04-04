@@ -81,6 +81,7 @@
                     <c:if test="${roles eq 'ADMIN'}">
                     <form action="${pageContext.servletContext.contextPath}/edit" method="post">
                         <input type="hidden" name="id" value="${u.id}">
+                        <input type="hidden" name="roles" value="${u.roles}">
                         <input type="hidden" name="action" value="findbyid">
                         <input type="submit" value="EDIT">
                     </form>
@@ -88,6 +89,7 @@
                     <c:if test="${!(roles eq 'ADMIN') && (u.mail eq login)}">
                         <form action="${pageContext.servletContext.contextPath}/edit" method="post">
                             <input type="hidden" name="id" value="${u.id}">
+                            <input type="hidden" name="roles" value="${u.roles}">
                             <input type="hidden" name="action" value="findbyid">
                             <input type="submit" value="EDIT">
                         </form>
@@ -98,6 +100,7 @@
                     <form action="${pageContext.servletContext.contextPath}/" method="post">
                         <input type="hidden" name="action" value="delete">
                         <input type="hidden" name="id" value="${u.id}">
+                        <input type="hidden" name="roles" value="${u.roles}">
                         <input type="submit" value="DELETE">
                     </form>
                     </c:if>
